@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "69959630047",
+    "project_id": "vsat-saarthi-5",
+    "storage_bucket": "vsat-saarthi-5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:69959630047:android:6a72828bc33e7db1cc3d6a",
+        "android_client_info": {
+          "package_name": "com.vinay.vsatsaarthi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFkkY-Qbr8dT_r3Nr9VpSLkNKUcoDeogo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
