@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -128,9 +129,66 @@ public class MainActivity extends AppCompatActivity {
                     Double satlong=Double.parseDouble(binding.satLongitude.getText().toString());
                     Double satlat=Double.parseDouble(binding.satlatitude.getText().toString());
                     Double altitude=Double.parseDouble(binding.sataltitude.getText().toString());
+                    //CalculateLookUpAngle(latitude,longitude,satlat,satlong,altitude);
                 }
             }
         });
+        binding.compass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Compass is ready to show", Toast.LENGTH_SHORT).show();
+            }
+        });
 
+    }
+    public String CalculateLookUpAngle(Double latitude ,Double longitude,Double satlat,Double SatLong,Double sataltitude)
+    {
+        double groundLatRad = Math.toRadians(latitude);
+        double groundLonRad = Math.toRadians(longitude);
+        double satLatRad = Math.toRadians(satlat);
+        double satLonRad = Math.toRadians(SatLong);
+
+        double earthRadius = 6378.0; // km
+        double satRadius = earthRadius+sataltitude;
+        // Calculate the range vector components in the Earth-centered, Earth-fixed (ECEF) frame.
+        double groundX = earthRadius * Math.cos(groundLatRad) * Math.cos(groundLonRad);
+        double groundY = earthRadius * Math.cos(groundLatRad) * Math.sin(groundLonRad);
+        double groundZ = earthRadius * Math.sin(groundLatRad);
+
+        double satX = satRadius * Math.cos(satLatRad) * Math.cos(satLonRad);
+        double satY = satRadius * Math.cos(satLatRad) * Math.sin(satLonRad);
+        double satZ = satRadius * Math.sin(satLatRad);
+
+        // Calculate the range vector (satellite - ground).
+        double rangeX = satX - groundX;
+        double rangeY = satY - groundY;
+        double rangeZ = satZ - groundZ;
+
+        // Calculate the local horizontal coordinate system (LHCS) unit vectors.
+        double eastX = -Math.sin(groundLonRad);
+        double eastY = Math.cos(groundLonRad);
+        double eastZ = 0.0;
+
+        double northX = -Math.sin(groundLatRad) * Math.cos(groundLonRad);
+        double northY = -Math.sin(groundLatRad) * Math.sin(groundLonRad);
+        double northZ = Math.cos(groundLatRad);
+
+        double upX = Math.cos(groundLatRad) * Math.cos(groundLonRad);
+        double upY = Math.cos(groundLatRad) * Math.sin(groundLonRad);
+        double upZ = Math.sin(groundLatRad);
+        // Calculate the azimuth and elevation.
+        double east = rangeX * eastX + rangeY * eastY + rangeZ * eastZ;
+        double north = rangeX * northX + rangeY * northY + rangeZ * northZ;
+        double up = rangeX * upX + rangeY * upY + rangeZ * upZ;
+        double azimuth = Math.toDegrees(Math.atan2(east, north));
+        if (azimuth < 0) {
+            azimuth += 360.0;
+        }
+        double range = Math.sqrt(rangeX * rangeX + rangeY * rangeY + rangeZ * rangeZ);
+        double elevation = Math.toDegrees(Math.asin(up / range));
+
+        ((TextView)findViewById(R.id.azismuth)).setText(azimuth+"");
+        ((TextView)findViewById(R.id.elevation)).setText(elevation+"");
+        return "Elevation is "+elevation +" Azismuth angle is "+azimuth;
     }
 }
