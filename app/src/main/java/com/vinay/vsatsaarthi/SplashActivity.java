@@ -28,7 +28,7 @@ public class SplashActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG);
                 }
                 finally {
-                    Intent intent=new Intent(SplashActivity.this,MainActivity.class);
+                    Intent intent=new Intent(SplashActivity.this,SignUpActivity.class);
                     startActivity(intent);
                     finish();
                 }
