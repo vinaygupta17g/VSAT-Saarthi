@@ -21,6 +21,5 @@ ActivityCompassBinding binding;
         Intent intent=getIntent();
         intent.getStringExtra("Azismuth");
         intent.getStringExtra("Elevation");
-        binding.azismuth.setText("Azismuth angle is "+intent.getStringExtra("Azismuth"));
     }
 }
