@@ -2,6 +2,7 @@ package com.vinay.vsatsaarthi;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -136,7 +137,16 @@ public class MainActivity extends AppCompatActivity {
         binding.compass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Compass is ready to show", Toast.LENGTH_SHORT).show();
+                if(binding.elevation.getText().toString().isEmpty())
+                    binding.elevation.setError("");
+                else if(binding.azismuth.getText().toString().isEmpty())
+                    binding.azismuth.setError("");
+                else{
+                    Intent intent=new Intent(MainActivity.this,CompassActivity.class);
+                    intent.putExtra("Azismuth",binding.azismuth.getText().toString());
+                    intent.putExtra("Elevation",binding.elevation.getText().toString());
+                    startActivity(intent);
+                }
             }
         });
 

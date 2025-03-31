@@ -1,5 +1,6 @@
 package com.vinay.vsatsaarthi;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -8,17 +9,18 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class CompassActivity extends AppCompatActivity {
+import com.vinay.vsatsaarthi.databinding.ActivityCompassBinding;
 
+public class CompassActivity extends AppCompatActivity {
+ActivityCompassBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_compass);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        binding=ActivityCompassBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        Intent intent=getIntent();
+        intent.getStringExtra("Azismuth");
+        intent.getStringExtra("Elevation");
+        binding.azismuth.setText("Azismuth angle is "+intent.getStringExtra("Azismuth"));
     }
 }
