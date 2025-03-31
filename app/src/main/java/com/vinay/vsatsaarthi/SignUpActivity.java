@@ -61,6 +61,10 @@ public class SignUpActivity extends AppCompatActivity {
                                     }
                                 });
                             }
+                            else
+                            {
+                                Toast.makeText(context,task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
                         }
                     });
                 }

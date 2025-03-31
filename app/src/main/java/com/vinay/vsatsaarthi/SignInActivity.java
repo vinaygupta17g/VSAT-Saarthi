@@ -3,6 +3,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,6 +47,10 @@ public class SignInActivity extends AppCompatActivity {
                               intent=new Intent(context,MainActivity.class);
                               startActivity(intent);
                               finish();
+                          }
+                          else
+                          {
+                              Toast.makeText(context,task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                           }
                       }
                   });
