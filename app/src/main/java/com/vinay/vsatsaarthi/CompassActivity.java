@@ -21,5 +21,9 @@ ActivityCompassBinding binding;
         Intent intent=getIntent();
         intent.getStringExtra("Azismuth");
         intent.getStringExtra("Elevation");
+        binding.satazismuth.setText(intent.getStringExtra("Azismuth"));
+        binding.satelevation.setText(intent.getStringExtra("Elevation"));
+        binding.longitude.setText(intent.getStringExtra("Longitude"));
+        binding.latitude.setText(intent.getStringExtra("Latitude"));
     }
 }

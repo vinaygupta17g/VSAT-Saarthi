@@ -131,6 +131,8 @@ public class MainActivity extends AppCompatActivity {
                     Double satlat=Double.parseDouble(binding.satlatitude.getText().toString());
                     Double altitude=Double.parseDouble(binding.sataltitude.getText().toString());
                     //CalculateLookUpAngle(latitude,longitude,satlat,satlong,altitude);
+                    binding.azismuth.setText(Math.round(latitude)+"");
+                    binding.elevation.setText(Math.round(latitude)+"");
                 }
             }
         });
@@ -145,6 +147,8 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent=new Intent(MainActivity.this,CompassActivity.class);
                     intent.putExtra("Azismuth",binding.azismuth.getText().toString());
                     intent.putExtra("Elevation",binding.elevation.getText().toString());
+                    intent.putExtra("Longitude",binding.userlongitude.getText().toString());
+                    intent.putExtra("Latitude",binding.userLatitude.getText().toString());
                     startActivity(intent);
                 }
             }
