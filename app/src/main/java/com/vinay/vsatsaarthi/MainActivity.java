@@ -35,26 +35,24 @@ public class MainActivity extends AppCompatActivity {
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         database=FirebaseDatabase.getInstance();
-        LocationManager locationManager =(LocationManager) getSystemService(LOCATION_SERVICE);
-        if(ActivityCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED &&ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION)!= PackageManager.PERMISSION_GRANTED)
-        {
-            ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},PackageManager.PERMISSION_GRANTED);
-        }
-        else
-        {
-            location =locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        }
         binding.setlonglat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                LocationManager locationManager =(LocationManager) getSystemService(LOCATION_SERVICE);
+                if(ActivityCompat.checkSelfPermission(MainActivity.this, ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED &&ActivityCompat.checkSelfPermission(MainActivity.this,Manifest.permission.ACCESS_COARSE_LOCATION)!= PackageManager.PERMISSION_GRANTED)
+                {
+                    ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},PackageManager.PERMISSION_GRANTED);
+                }
+                else {
+                    location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                     if(location!=null){
                         binding.userlongitude.setText(location.getLongitude()+"");
                         binding.userLatitude.setText(location.getLatitude()+"");
                     }
                     else
                         Toast.makeText(MainActivity.this, "Give Access for location", Toast.LENGTH_SHORT).show();
-
-            }
+                }
+                }
         });
         satname.add("Select Satellite ----");
         database.getReference().child("Satellite").addValueEventListener(new ValueEventListener() {
