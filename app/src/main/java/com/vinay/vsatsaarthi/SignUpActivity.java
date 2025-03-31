@@ -1,4 +1,5 @@
 package com.vinay.vsatsaarthi;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,11 +21,14 @@ public class SignUpActivity extends AppCompatActivity {
     ActivitySignUpBinding binding;
     FirebaseDatabase database;
     FirebaseAuth auth;
+    Intent intent;
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding=ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        context=this;
         auth=FirebaseAuth.getInstance();
         database=FirebaseDatabase.getInstance();
         binding.signup.setOnClickListener(new View.OnClickListener() {
@@ -50,8 +54,8 @@ public class SignUpActivity extends AppCompatActivity {
                                 database.getReference().child("Users").child(uid).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
-                                        Toast.makeText(SignUpActivity.this,"User Successfully Created", Toast.LENGTH_SHORT).show();
-                                        Intent intent=new Intent(SignUpActivity.this, SignInActivity.class);
+                                        Toast.makeText(context,"User Successfully Created", Toast.LENGTH_SHORT).show();
+                                        intent=new Intent(SignUpActivity.this, SignInActivity.class);
                                         startActivity(intent);
                                         finish();
                                     }
@@ -62,6 +66,12 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             }
         });
-
+        binding.signin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent=new Intent(context, SignInActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
