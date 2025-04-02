@@ -6,18 +6,12 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.AudioManager;
-import android.media.MediaParser;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.MenuWrapperICS;
-
 import com.vinay.vsatsaarthi.databinding.ActivityCompassBinding;
-
 public class CompassActivity extends AppCompatActivity implements SensorEventListener {
 ActivityCompassBinding binding;
     float accelerometerx=0f;

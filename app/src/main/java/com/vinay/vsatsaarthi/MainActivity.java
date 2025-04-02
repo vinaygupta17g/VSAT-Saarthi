@@ -150,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("Longitude",binding.userlongitude.getText().toString());
                     intent.putExtra("Latitude",binding.userLatitude.getText().toString());
                     startActivity(intent);
+                    finish();
                 }
             }
         });
