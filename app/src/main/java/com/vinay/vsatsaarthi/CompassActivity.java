@@ -6,9 +6,12 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.AudioManager;
+import android.media.MediaParser;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.vinay.vsatsaarthi.databinding.ActivityCompassBinding;
@@ -20,26 +23,6 @@ ActivityCompassBinding binding;
     float magnetometerx=0f;
     float magnetometery=0f;
     float magnetometerz=0f;
-    public void mediaplayer(boolean value)
-    {
-        MediaPlayer mp=new MediaPlayer();
-        mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        String audiopath="android.resource://com.vinay.vsatsaarthi/raw/beepsound";
-        Uri audio=Uri.parse(audiopath);
-        try {
-            mp.setDataSource(this,audio);
-            mp.prepare();
-        }
-        catch(Exception e)
-        {
-            Toast.makeText(this,e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-
-        if(value)
-            mp.start();
-        else
-            mp.stop();
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,9 +48,7 @@ ActivityCompassBinding binding;
         {
             Toast.makeText(this, "Sensor not found", Toast.LENGTH_SHORT).show();
         }
-
     }
-
     @Override
     public void onSensorChanged(SensorEvent event) {
         if(event.sensor.getType()==Sensor.TYPE_ACCELEROMETER)
@@ -92,25 +73,33 @@ ActivityCompassBinding binding;
                 SensorManager.getOrientation(rotationMatrix,orientationValues);
                 int azimuth=(int) Math.toDegrees(orientationValues[0]);
                 int elevation=(int) Math.toDegrees(orientationValues[1]);
-
                 azimuth=(azimuth+360)%360;
                 binding.compass.setRotation(-azimuth);
                 binding.userazismuth.setText(azimuth+"");
                 binding.userelevation.setText(elevation+"");
-                if (binding.satazismuth.getText().toString().equals(binding.userazismuth.getText().toString())&&binding.satelevation.getText().toString().equals(binding.userelevation.getText().toString()))
-                {
+                if(binding.satazismuth.getText().toString().equals(binding.userazismuth.getText().toString())&&binding.satelevation.getText().toString().equals(binding.userelevation.getText().toString()))
                     mediaplayer(true);
-                }
-                else
-                {
-                    mediaplayer(false);
-                }
             }
         }
     }
-
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
+    }
+    public void mediaplayer(boolean flag)
+    {
+        MediaPlayer mediaPlayer =new MediaPlayer();
+        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        String audiopath="android.resource://com.vinay.vsatsaarthi/raw/beepsound";
+        Uri audio=Uri.parse(audiopath);
+        try {
+            mediaPlayer.setDataSource(this,audio);
+            mediaPlayer.prepare();}
+        catch (Exception e)
+        {
+            Toast.makeText(this,e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+            if(flag) mediaPlayer.start();
+            else mediaPlayer.stop();
     }
 }
