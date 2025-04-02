@@ -6,6 +6,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.AudioManager;
+import android.media.MediaParser;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import android.provider.MediaStore;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuWrapperICS;
+
 import com.vinay.vsatsaarthi.databinding.ActivityCompassBinding;
 
 public class CompassActivity extends AppCompatActivity implements SensorEventListener {
@@ -23,6 +26,26 @@ ActivityCompassBinding binding;
     float magnetometerx=0f;
     float magnetometery=0f;
     float magnetometerz=0f;
+    public void mediaplayer(boolean value)
+    {
+        MediaPlayer mp=new MediaPlayer();
+        mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        String audiopath="android.resource://com.vinay.vsatsaarthi/raw/beepsound";
+        Uri audio=Uri.parse(audiopath);
+        try {
+            mp.setDataSource(this,audio);
+            mp.prepare();
+        }
+        catch(Exception e)
+        {
+            Toast.makeText(this,e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
+        if(value)
+            mp.start();
+        else
+            mp.stop();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +103,14 @@ ActivityCompassBinding binding;
                 binding.compass.setRotation(-azimuth);
                 binding.userazismuth.setText(azimuth+"");
                 binding.userelevation.setText(elevation+"");
+                if (binding.satazismuth.getText().toString().equals(binding.userazismuth.getText().toString())&&binding.satelevation.getText().toString().equals(binding.userelevation.getText().toString()))
+                {
+                    mediaplayer(true);
+                }
+                else
+                {
+                    mediaplayer(false);
+                }
             }
         }
     }
