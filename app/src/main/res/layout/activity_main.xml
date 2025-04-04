@@ -48,7 +48,7 @@
                 android:background="@drawable/btn_bg"
                 android:text="Set Longitude and Lattitude"
                 android:textSize="16dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/white"/>
 
             <Spinner
                 android:id="@+id/spinner"
@@ -124,7 +124,7 @@
                 android:background="@drawable/btn_bg"
                 android:text="Calculate Look Up Angle"
                 android:textSize="16dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/white"/>
 
             <TextView
                 android:id="@+id/elevation"
@@ -161,7 +161,7 @@
                 android:layout_marginTop="15dp"
                 android:background="@drawable/btn_bg"
                 android:text="Get Compass"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18dp"
                 android:visibility="gone"
                 android:textStyle="bold|italic" />

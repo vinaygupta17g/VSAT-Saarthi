@@ -59,13 +59,9 @@ public class SignInActivity extends AppCompatActivity {
         });
         if(auth.getCurrentUser()!=null)
         {
-            if(auth.getCurrentUser().getEmail().equals("vinaykumarmitrc@gmail.com"))
-            {
                 intent=new Intent(context,MainActivity.class);
                 startActivity(intent);
                 finish();
-                Toast.makeText(context, "Sign in as admin", Toast.LENGTH_SHORT).show();
-            }
 
         }
         binding.signup.setOnClickListener(new View.OnClickListener() {

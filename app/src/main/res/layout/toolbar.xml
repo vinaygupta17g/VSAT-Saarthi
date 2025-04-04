@@ -4,6 +4,7 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="75sp"
+    android:background="@drawable/space"
     android:elevation="10dp">
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,12 +20,14 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="16dp"
-            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:textColor="@color/white"
+            android:textStyle="bold|italic"
             android:text="INDIAN SPACE RESEARCH ORGANISATION"/>
         <ImageView
             android:layout_width="80sp"
             android:layout_height="70sp"
+            app:tint="@color/white"
             android:paddingTop="5dp"
             android:src="@drawable/logo"/>
 
