@@ -163,5 +163,6 @@
                 android:textColor="@color/black" />
         </LinearLayout>
     </LinearLayout>
+    <include layout="@layout/navbar"/>
 
 </RelativeLayout>

@@ -44,6 +44,7 @@ public class SignUpActivity extends AppCompatActivity {
                     binding.password.setError("");
                 else
                 {
+                    binding.signup.setBackgroundDrawable(getDrawable(R.drawable.btn_clicked_bg));
                     auth.createUserWithEmailAndPassword(binding.email.getText().toString(),binding.password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {

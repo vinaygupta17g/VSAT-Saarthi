@@ -3,12 +3,15 @@ import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 import android.Manifest;
 import android.animation.ObjectAnimator;
+import android.app.ActionBar;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -58,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                     if(location!=null){
+                        binding.setlonglat.setBackgroundDrawable(getDrawable(R.drawable.btn_clicked_bg));
                         binding.userlongitude.setText(location.getLongitude()+"");
                         binding.userLatitude.setText(location.getLatitude()+"");
                     }
@@ -132,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
                     binding.satlatitude.setError("");
                 else
                 {
+                    binding.calculate.setBackgroundDrawable(getDrawable(R.drawable.btn_clicked_bg));
                     binding.elevation.setVisibility(View.VISIBLE);
                     binding.azismuth.setVisibility(View.VISIBLE);
                     binding.compass.setVisibility(View.VISIBLE);
@@ -154,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
                 else if(binding.azismuth.getText().toString().isEmpty())
                     binding.azismuth.setError("");
                 else{
+                    binding.compass.setBackgroundDrawable(getDrawable(R.drawable.btn_clicked_bg));
                     Intent intent=new Intent(MainActivity.this,CompassActivity.class);
                     intent.putExtra("Azismuth",binding.azismuth.getText().toString());
                     intent.putExtra("Elevation",binding.elevation.getText().toString());
