@@ -24,12 +24,13 @@
             android:textColor="@color/white"
             android:textStyle="bold|italic"
             android:text="INDIAN SPACE RESEARCH ORGANISATION"/>
+
         <ImageView
             android:layout_width="80sp"
             android:layout_height="70sp"
-            app:tint="@color/white"
             android:paddingTop="5dp"
-            android:src="@drawable/logo"/>
+            android:src="@drawable/logo"
+            app:tint="@color/white" />
 
     </LinearLayout>
 </androidx.appcompat.widget.Toolbar>
