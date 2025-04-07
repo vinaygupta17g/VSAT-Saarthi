@@ -29,7 +29,7 @@
             android:layout_width="80sp"
             android:layout_height="70sp"
             android:paddingTop="5dp"
-            android:src="@drawable/logo"
+            android:src="@drawable/logos"
             app:tint="@color/white" />
 
     </LinearLayout>

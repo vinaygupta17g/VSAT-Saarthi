@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -71,6 +73,27 @@ public class SignInActivity extends AppCompatActivity {
                 intent=new Intent(context,SignUpActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+        binding.forget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(binding.email.getText().toString().isEmpty())
+                    binding.email.setError("Enter email to forget password");
+                else
+                {
+                    auth.sendPasswordResetEmail(binding.email.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Toast.makeText(context, "Reset link sent on email", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(context, "Reset link not sent", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
         });
     }
