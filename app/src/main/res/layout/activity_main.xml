@@ -43,7 +43,6 @@
                 </com.google.android.material.card.MaterialCardView>
 
             </RelativeLayout>
-
             <EditText
                 android:id="@+id/userlongitude"
                 android:layout_width="match_parent"
@@ -76,7 +75,6 @@
                 android:text="Set Longitude and Lattitude"
                 android:textSize="16dp"
                 android:textColor="@color/white"/>
-
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="match_parent"

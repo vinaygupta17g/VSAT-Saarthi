@@ -3,34 +3,29 @@ import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 import android.Manifest;
 import android.animation.ObjectAnimator;
-import android.app.ActionBar;
-import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.vinay.vsatsaarthi.Models.SatelliteModel;
 import com.vinay.vsatsaarthi.databinding.ActivityMainBinding;
-
 import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     FirebaseDatabase database;
@@ -87,10 +82,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-        ArrayAdapter<String> adapter=new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,satname);
-        binding.spinner.setAdapter(adapter);
-
         binding.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -109,19 +100,18 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
-
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
 
                 }
             });
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+        ArrayAdapter<String> adapter=new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,satname);
+        binding.spinner.setAdapter(adapter);
 
         binding.calculate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -222,4 +212,6 @@ public class MainActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.elevation)).setText(elevation+"");
         return "Elevation is "+elevation +" Azismuth angle is "+azimuth;
     }
+
+
 }
