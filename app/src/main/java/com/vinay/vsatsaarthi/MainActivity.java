@@ -210,6 +210,4 @@ public class MainActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.elevation)).setText(elevation+"");
         return "Elevation is "+elevation +" Azismuth angle is "+azimuth;
     }
-
-
 }
