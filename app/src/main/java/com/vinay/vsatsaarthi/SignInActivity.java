@@ -60,13 +60,13 @@ public class SignInActivity extends AppCompatActivity {
               }
             }
         });
-        if(auth.getCurrentUser()!=null)
+        /*if(auth.getCurrentUser()!=null)
         {
                 intent=new Intent(context,MainActivity.class);
                 startActivity(intent);
                 finish();
 
-        }
+        }*/
         binding.signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
