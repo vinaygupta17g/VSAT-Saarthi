@@ -134,8 +134,6 @@ public class MainActivity extends AppCompatActivity {
                     Double satlat=Double.parseDouble(binding.satlatitude.getText().toString());
                     Double altitude=Double.parseDouble(binding.sataltitude.getText().toString());
                     CalculateLookUpAngle(latitude,longitude,satlat,satlong,altitude);
-//                    binding.azismuth.setText(Math.round(latitude)+"");
-//                    binding.elevation.setText(Math.round(latitude)+"");
                 }
             }
         });
@@ -160,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    public String CalculateLookUpAngle(Double latitude ,Double longitude,Double satlat,Double SatLong,Double sataltitude)
+    public void CalculateLookUpAngle(Double latitude ,Double longitude,Double satlat,Double SatLong,Double sataltitude)
     {
         double groundLatRad = Math.toRadians(latitude);
         double groundLonRad = Math.toRadians(longitude);
@@ -208,6 +206,5 @@ public class MainActivity extends AppCompatActivity {
 
         ((TextView)findViewById(R.id.azismuth)).setText(azimuth+"");
         ((TextView)findViewById(R.id.elevation)).setText(elevation+"");
-        return "Elevation is "+elevation +" Azismuth angle is "+azimuth;
     }
 }

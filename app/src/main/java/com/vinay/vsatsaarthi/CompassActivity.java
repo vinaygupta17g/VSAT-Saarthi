@@ -83,9 +83,7 @@ ActivityCompassBinding binding;
         }
     }
     @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-    }
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {}
     public void mediaplayer(boolean flag)
     {
         MediaPlayer mediaPlayer =new MediaPlayer();
