@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     binding.calculate.setBackgroundDrawable(getDrawable(R.drawable.btn_clicked_bg));
                     binding.elevation.setVisibility(View.VISIBLE);
-                    binding.azismuth.setVisibility(View.VISIBLE);
+                    binding.azimuth.setVisibility(View.VISIBLE);
                     binding.compass.setVisibility(View.VISIBLE);
                     Double longitude=Double.parseDouble(binding.userlongitude.getText().toString());
                     Double latitude=Double.parseDouble(binding.userLatitude.getText().toString());
@@ -142,12 +142,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(binding.elevation.getText().toString().isEmpty())
                     binding.elevation.setError("");
-                else if(binding.azismuth.getText().toString().isEmpty())
-                    binding.azismuth.setError("");
+                else if(binding.azimuth.getText().toString().isEmpty())
+                    binding.azimuth.setError("");
                 else{
                     binding.compass.setBackgroundDrawable(getDrawable(R.drawable.btn_clicked_bg));
                     Intent intent=new Intent(MainActivity.this,CompassActivity.class);
-                    intent.putExtra("Azismuth",binding.azismuth.getText().toString());
+                    intent.putExtra("Azismuth",binding.azimuth.getText().toString());
                     intent.putExtra("Elevation",binding.elevation.getText().toString());
                     intent.putExtra("Longitude",binding.userlongitude.getText().toString());
                     intent.putExtra("Latitude",binding.userLatitude.getText().toString());
@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
         double range = Math.sqrt(rangeX * rangeX + rangeY * rangeY + rangeZ * rangeZ);
         double elevation = Math.toDegrees(Math.asin(up / range));
 
-        ((TextView)findViewById(R.id.azismuth)).setText(azimuth+"");
+        ((TextView)findViewById(R.id.azimuth)).setText(azimuth+"");
         ((TextView)findViewById(R.id.elevation)).setText(elevation+"");
     }
 }
