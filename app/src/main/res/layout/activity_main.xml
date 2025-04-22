@@ -72,8 +72,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/btn_bg"
-                android:text="Set Longitude and Lattitude"
-                android:textSize="16dp"
+                android:text="get location"
+                android:textSize="17dp"
                 android:textColor="@color/white"/>
             <Spinner
                 android:id="@+id/spinner"
