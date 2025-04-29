@@ -12,10 +12,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 public class api {
     public static final String url="https://94a7-2401-4900-7ef7-8a6-78f0-49c5-43d8-c7da.ngrok-free.app/satellite";
     public static void getsatellite(Context context){
