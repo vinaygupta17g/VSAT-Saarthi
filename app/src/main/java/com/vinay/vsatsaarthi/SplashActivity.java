@@ -6,13 +6,16 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.vinay.vsatsaarthi.API.api;
+
 public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ImageView imageView=findViewById(R.id.logo);
-
+        api.getsatellite(this);
         Thread thrd=new Thread()
         {
             public void run()
