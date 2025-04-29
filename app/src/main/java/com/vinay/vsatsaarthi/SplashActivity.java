@@ -15,7 +15,6 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ImageView imageView=findViewById(R.id.logo);
-        api.getsatellite(this);
         Thread thrd=new Thread()
         {
             public void run()
