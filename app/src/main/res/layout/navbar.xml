@@ -12,6 +12,4 @@
         android:background="#D4000000"
         android:textColor="@color/white"
         android:text="© TECH TITANS ,VSAT Saarthi,ISRO"/>
-
-
 </RelativeLayout>
