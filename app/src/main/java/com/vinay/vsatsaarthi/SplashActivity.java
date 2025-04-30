@@ -1,6 +1,7 @@
 package com.vinay.vsatsaarthi;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -8,6 +9,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.vinay.vsatsaarthi.API.api;
+
+import java.util.ArrayList;
 
 public class SplashActivity extends AppCompatActivity {
     @Override
@@ -28,7 +31,6 @@ public class SplashActivity extends AppCompatActivity {
                     imageView.startAnimation(animation1);
                     animation.setDuration(1000);
                     Thread.sleep(1000);
-
                 }
                 catch (Exception e)
                 {
