@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                     else
                         Toast.makeText(MainActivity.this, "Give Access for location", Toast.LENGTH_SHORT).show();
                 }
-                }
+            }
         });
         satname.add("Select Satellite ----");
         database.getReference().child("Satellite").addValueEventListener(new ValueEventListener() {
@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
                     satname.add(model.getSatelliteName());
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -100,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-
                 }
             });
             }
@@ -110,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
         });
         ArrayAdapter<String> adapter=new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,satname);
         binding.spinner.setAdapter(adapter);
-
         binding.calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,7 +153,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
     public void CalculateLookUpAngle(Double latitude ,Double longitude,Double satlat,Double SatLong,Double sataltitude)
     {
@@ -171,25 +167,20 @@ public class MainActivity extends AppCompatActivity {
         double groundX = earthRadius * Math.cos(groundLatRad) * Math.cos(groundLonRad);
         double groundY = earthRadius * Math.cos(groundLatRad) * Math.sin(groundLonRad);
         double groundZ = earthRadius * Math.sin(groundLatRad);
-
         double satX = satRadius * Math.cos(satLatRad) * Math.cos(satLonRad);
         double satY = satRadius * Math.cos(satLatRad) * Math.sin(satLonRad);
         double satZ = satRadius * Math.sin(satLatRad);
-
         // Calculate the range vector (satellite - ground).
         double rangeX = satX - groundX;
         double rangeY = satY - groundY;
         double rangeZ = satZ - groundZ;
-
         // Calculate the local horizontal coordinate system (LHCS) unit vectors.
         double eastX = -Math.sin(groundLonRad);
         double eastY = Math.cos(groundLonRad);
         double eastZ = 0.0;
-
         double northX = -Math.sin(groundLatRad) * Math.cos(groundLonRad);
         double northY = -Math.sin(groundLatRad) * Math.sin(groundLonRad);
         double northZ = Math.cos(groundLatRad);
-
         double upX = Math.cos(groundLatRad) * Math.cos(groundLonRad);
         double upY = Math.cos(groundLatRad) * Math.sin(groundLonRad);
         double upZ = Math.sin(groundLatRad);
@@ -203,7 +194,6 @@ public class MainActivity extends AppCompatActivity {
         }
         double range = Math.sqrt(rangeX * rangeX + rangeY * rangeY + rangeZ * rangeZ);
         double elevation = Math.toDegrees(Math.asin(up / range));
-
         ((TextView)findViewById(R.id.azimuth)).setText(azimuth+"");
         ((TextView)findViewById(R.id.elevation)).setText(elevation+"");
     }
