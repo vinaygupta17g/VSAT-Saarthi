@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        ArrayAdapter<String> adapter=new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,satname);
+        ArrayAdapter<String> adapter=new ArrayAdapter<>(this,R.layout.spinner_item,satname);
         binding.spinner.setAdapter(adapter);
         binding.calculate.setOnClickListener(new View.OnClickListener() {
             @Override

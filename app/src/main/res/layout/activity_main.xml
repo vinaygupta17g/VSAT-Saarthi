@@ -53,7 +53,8 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:layout_marginTop="20dp"
-                android:textColor="@color/black" />
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
 
             <EditText
                 android:id="@+id/userLatitude"
@@ -65,7 +66,8 @@
                 android:inputType="numberDecimal"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:textColor="@color/black" />
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/setlonglat"
                 android:layout_width="match_parent"
@@ -80,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="15dp"
-                android:popupBackground="@color/white"
+                android:popupBackground="@color/black"
                 android:background="@drawable/background_bg"/>
 
             <TextView
@@ -94,7 +96,8 @@
                 android:paddingTop="5dp"
                 android:paddingRight="10dp"
                 android:textSize="20dp"
-                android:textColor="@color/black" />
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -163,8 +166,8 @@
                 android:textSize="20dp"
                 android:hint="Elevation Angle"
                 android:visibility="gone"
-                android:textColor="@color/black" />
-
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
             <TextView
                 android:id="@+id/azimuth"
                 android:layout_width="match_parent"
@@ -177,7 +180,8 @@
                 android:hint="Azismuth Angle"
                 android:textSize="20dp"
                 android:visibility="gone"
-                android:textColor="@color/black" />
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/compass"

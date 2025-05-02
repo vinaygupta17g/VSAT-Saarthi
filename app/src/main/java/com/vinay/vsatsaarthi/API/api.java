@@ -10,7 +10,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import  com.vinay.vsatsaarthi.res.res;
+import  com.vinay.vsatsaarthi.utils.res;
 import org.json.JSONArray;
 import org.json.JSONObject;
 public class api {

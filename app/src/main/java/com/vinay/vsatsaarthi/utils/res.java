@@ -1,4 +1,4 @@
-package com.vinay.vsatsaarthi.res;
+package com.vinay.vsatsaarthi.utils;
 
 import android.content.Context;
 import android.widget.Toast;
