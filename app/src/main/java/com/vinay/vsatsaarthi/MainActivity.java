@@ -12,17 +12,22 @@ import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.widget.ImageViewCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -41,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        Toolbar toolbar =findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         database=FirebaseDatabase.getInstance();
         world = findViewById(R.id.earth);
         float screenWidth =getResources().getDisplayMetrics().widthPixels;
@@ -204,5 +211,20 @@ public class MainActivity extends AppCompatActivity {
         double elevation = Math.toDegrees(Math.asin(up / range));
         ((TextView)findViewById(R.id.azimuth)).setText(azimuth+"");
         ((TextView)findViewById(R.id.elevation)).setText(elevation+"");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(MainActivity.this,SignInActivity.class);
+        startActivity(intent);
+        finish();
+        return true;
     }
 }

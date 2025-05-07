@@ -25,12 +25,13 @@
             android:textStyle="bold|italic"
             android:text="INDIAN SPACE RESEARCH ORGANISATION"/>
 
-        <ImageView
-            android:layout_width="80sp"
-            android:layout_height="70sp"
-            android:paddingTop="5dp"
-            android:src="@drawable/logos"
-            app:tint="@color/white" />
+<!--        <ImageView-->
+<!--            android:layout_width="30sp"-->
+<!--            android:layout_height="30sp"-->
+<!--            android:layout_marginTop="22dp"-->
+<!--            android:src="@drawable/baseline_logout_24"-->
+<!--            app:tint="@color/white"-->
+<!--            android:layout_marginLeft="40dp"/>-->
 
     </LinearLayout>
 </androidx.appcompat.widget.Toolbar>
