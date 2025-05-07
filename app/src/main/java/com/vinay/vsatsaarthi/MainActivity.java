@@ -3,8 +3,12 @@ import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 import android.Manifest;
 import android.animation.ObjectAnimator;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -17,6 +21,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.widget.ImageViewCompat;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -153,6 +159,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+//        ((ImageView)findViewById(R.id.logout)).setImageDrawable(getDrawable(R.drawable.logos));
+//        ImageViewCompat.setImageTintList(((ImageView)findViewById(R.id.logout)), ColorStateList.valueOf(Color.WHITE));
     }
     public void CalculateLookUpAngle(Double latitude ,Double longitude,Double satlat,Double SatLong,Double sataltitude)
     {
