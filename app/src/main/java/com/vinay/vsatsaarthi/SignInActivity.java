@@ -58,9 +58,17 @@ public class SignInActivity extends AppCompatActivity {
         });
         if(auth.getCurrentUser()!=null)
         {
+            if(auth.getCurrentUser().getEmail().equals("vinaykumarmitrc@gmail.com"))
+            {
+                intent=new Intent(context,AdminActivity.class);
+                startActivity(intent);
+                finish();
+            }
+            else {
                 intent=new Intent(context,MainActivity.class);
                 startActivity(intent);
                 finish();
+            }
 
         }
         binding.signup.setOnClickListener(new View.OnClickListener() {
