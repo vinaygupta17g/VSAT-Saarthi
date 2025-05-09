@@ -135,8 +135,7 @@ public class MainActivity extends AppCompatActivity {
                 else
                 {
                     binding.calculate.setBackgroundDrawable(getDrawable(R.drawable.btn_clicked_bg));
-                    binding.elevation.setVisibility(View.VISIBLE);
-                    binding.azimuth.setVisibility(View.VISIBLE);
+                    binding.angle.setVisibility(View.VISIBLE);
                     binding.compass.setVisibility(View.VISIBLE);
                     Double longitude=Double.parseDouble(binding.userlongitude.getText().toString());
                     Double latitude=Double.parseDouble(binding.userLatitude.getText().toString());
@@ -209,8 +208,8 @@ public class MainActivity extends AppCompatActivity {
         }
         double range = Math.sqrt(rangeX * rangeX + rangeY * rangeY + rangeZ * rangeZ);
         double elevation = Math.toDegrees(Math.asin(up / range));
-        ((TextView)findViewById(R.id.azimuth)).setText(azimuth+"");
-        ((TextView)findViewById(R.id.elevation)).setText(elevation+"");
+        ((TextView)findViewById(R.id.azimuth)).setText(String.format("%.9f", azimuth));
+        ((TextView)findViewById(R.id.elevation)).setText(String.format("%.9f",elevation));
     }
 
     @Override
