@@ -116,8 +116,7 @@ ActivityCompassBinding binding;
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(CompassActivity.this,SignInActivity.class);
+        Intent intent = new Intent(CompassActivity.this,MainActivity.class);
         startActivity(intent);
         finish();
         return true;
