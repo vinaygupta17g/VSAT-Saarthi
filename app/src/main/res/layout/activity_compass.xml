@@ -15,7 +15,7 @@
         android:layout_height="300dp"
         android:layout_below="@+id/main1"
         android:layout_marginTop="90dp"
-        app:tint="@color/white"
+        app:tint="#FFFFFF"
         android:layout_centerHorizontal="true"
         android:src="@drawable/compass" />
 
