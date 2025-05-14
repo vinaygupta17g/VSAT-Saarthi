@@ -14,7 +14,7 @@ import  com.vinay.vsatsaarthi.utils.res;
 import org.json.JSONArray;
 import org.json.JSONObject;
 public class api {
-    public static final String url="https://682c-2401-4900-a877-9a2b-8d22-4174-2b31-7d83.ngrok-free.app/satellite";
+    public static final String url="http://ec2-65-0-7-42.ap-south-1.compute.amazonaws.com:5001/satellite/";
     public static void getsatellite(Context context){
         RequestQueue requestQueue =Volley.newRequestQueue(context);
         JsonArrayRequest jsonArrayRequest =new JsonArrayRequest(Request.Method.GET, url + "/getsatellite", null, new Response.Listener<JSONArray>() {
