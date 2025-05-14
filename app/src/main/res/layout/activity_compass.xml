@@ -38,7 +38,7 @@
                 android:paddingLeft="10dp"
                 android:text="Azimuth : "
                 android:textSize="20dp"
-                android:textColor="@color/white" />
+                android:textColor="#FFEB3B" />
             <TextView
                 android:id="@+id/satazismuth"
                 android:layout_width="wrap_content"
@@ -57,7 +57,7 @@
                 android:paddingLeft="30dp"
                 android:text="Elevation : "
                 android:textSize="20dp"
-                android:textColor="@color/white" />
+                android:textColor="#FFEB3B" />
             <TextView
                 android:id="@+id/satelevation"
                 android:layout_width="match_parent"
@@ -137,7 +137,7 @@
                 android:paddingLeft="10dp"
                 android:text="Longitude : "
                 android:textSize="20dp"
-                android:textColor="@color/white" />
+                android:textColor="#FFEB3B" />
             <TextView
                 android:id="@+id/longitude"
                 android:layout_width="wrap_content"
@@ -156,7 +156,7 @@
                 android:layout_height="30dp"
                 android:text="Latitude : "
                 android:textSize="20dp"
-                android:textColor="@color/white" />
+                android:textColor="#FFEB3B" />
             <TextView
                 android:id="@+id/latitude"
                 android:layout_width="wrap_content"

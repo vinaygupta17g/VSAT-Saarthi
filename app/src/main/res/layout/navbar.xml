@@ -10,6 +10,6 @@
         android:layout_alignParentBottom="true"
         android:gravity="center"
         android:background="#D4000000"
-        android:textColor="@color/white"
+        android:textColor="#FFEB3B"
         android:text="© TECH TITANS ,VSAT Saarthi,ISRO"/>
 </RelativeLayout>
