@@ -155,13 +155,13 @@ public class MainActivity extends AppCompatActivity {
                     binding.azimuth.setError("");
                 else{
                     binding.compass.setBackgroundDrawable(getDrawable(R.drawable.btn_clicked_bg));
-                    Intent intent=new Intent(MainActivity.this,CompassActivity.class);
+                    /*Intent intent=new Intent(MainActivity.this,CompassActivity.class);
                     intent.putExtra("Azismuth",binding.azimuth.getText().toString());
                     intent.putExtra("Elevation",binding.elevation.getText().toString());
                     intent.putExtra("Longitude",binding.userlongitude.getText().toString());
                     intent.putExtra("Latitude",binding.userLatitude.getText().toString());
                     startActivity(intent);
-                    finish();
+                    finish();*/
                 }
             }
         });
