@@ -15,34 +15,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 public class api {
     public static final String url="https://satellite-detail.onrender.com/satellite";
-    public static void getsatellite(Context context){
-        RequestQueue requestQueue =Volley.newRequestQueue(context);
-        JsonArrayRequest jsonArrayRequest =new JsonArrayRequest(Request.Method.GET, url + "/getsatellite", null, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                try
-                {
-                    for (int i=0;i<response.length();i++)
-                    {
-                        JSONObject jsonObject =response.getJSONObject(i);
-                        String name=jsonObject.getString("satname");
-                        Log.d("satname",name);
-                    }
-                }
-                catch (Exception e)
-                {
-                    res.res(context,e.getMessage());
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                res.res(context,error.getMessage());
-            }
-        });
-        requestQueue.add(jsonArrayRequest);
-    }
-
     public static void postsatellite(String satname,String satlatitude,String satlongitude,String sataltitude,Context context)
     {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
