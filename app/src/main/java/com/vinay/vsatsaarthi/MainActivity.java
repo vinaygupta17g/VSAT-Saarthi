@@ -22,8 +22,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
@@ -31,8 +29,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.vinay.vsatsaarthi.databinding.ActivityMainBinding;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
@@ -172,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
                     {
                         Log.e("Error message",e.getMessage()+"");
                     }
-                    JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.POST, "https://10e8-2401-4900-7aad-9826-11ac-a698-ef23-ff37.ngrok-free.app/angle/calculatelookupangle", jsonObject, response -> {
+                    JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.POST, "https://satellite-detail.onrender.com/angle/calculatelookupangle", jsonObject, response -> {
                         try {
                             String azimuth = response.getString("azimuth");
                             String elevation = response.getString("elevation");
