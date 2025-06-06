@@ -22,12 +22,17 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.firebase.auth.FirebaseAuth;
 import com.vinay.vsatsaarthi.databinding.ActivityMainBinding;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
@@ -69,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        satname.add("Select Satellite ----");
         ArrayAdapter<String> adapter=new ArrayAdapter<>(this,R.layout.spinner_item,satname);
         binding.spinner.setAdapter(adapter);
 
@@ -78,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         JsonArrayRequest jsonArrayRequest =new JsonArrayRequest(Request.Method.GET, "https://satellite-detail.onrender.com/satellite/getsatellite", null, response -> {
             try {
                 satname.clear();
+                satname.add("Select Satellite");
                 for (int i=0;i<response.length();i++)
                 {
                     JSONObject jsonObject=response.getJSONObject(i);
@@ -154,14 +159,39 @@ public class MainActivity extends AppCompatActivity {
                 else
                 {
                     binding.calculate.setBackgroundDrawable(getDrawable(R.drawable.btn_clicked_bg));
-                    binding.angle.setVisibility(View.VISIBLE);
-                    binding.compass.setVisibility(View.VISIBLE);
-                    Double longitude=Double.parseDouble(binding.userlongitude.getText().toString());
-                    Double latitude=Double.parseDouble(binding.userLatitude.getText().toString());
-                    Double satlong=Double.parseDouble(binding.satLongitude.getText().toString());
-                    Double satlat=Double.parseDouble(binding.satlatitude.getText().toString());
-                    Double altitude=Double.parseDouble(binding.sataltitude.getText().toString());
-                    CalculateLookUpAngle(latitude,longitude,satlat,satlong,altitude);
+                    RequestQueue requestQueue1 = Volley.newRequestQueue(MainActivity.this);
+                    JSONObject jsonObject =new JSONObject();
+                    try {
+                        jsonObject.put("longitude",binding.userlongitude.getText().toString());
+                        jsonObject.put("latitude", binding.userLatitude.getText().toString());
+                        jsonObject.put("satlatitude", binding.satlatitude.getText().toString());
+                        jsonObject.put("satlongitude",binding.satLongitude.getText().toString());
+                        jsonObject.put("sataltitude",binding.sataltitude.getText().toString());
+                    }
+                    catch (Exception e)
+                    {
+                        Log.e("Error message",e.getMessage()+"");
+                    }
+                    JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.POST, "https://10e8-2401-4900-7aad-9826-11ac-a698-ef23-ff37.ngrok-free.app/angle/calculatelookupangle", jsonObject, response -> {
+                        try {
+                            String azimuth = response.getString("azimuth");
+                            String elevation = response.getString("elevation");
+                            azimuth = azimuth.replaceAll("(\\.\\d{9})\\d+", "$1");
+                            elevation = elevation.replaceAll("(\\.\\d{9})\\d+", "$1");
+                            ((TextView)findViewById(R.id.azimuth)).setText(azimuth);
+                            ((TextView)findViewById(R.id.elevation)).setText(elevation);
+                            if(!azimuth.isEmpty()&&!elevation.isEmpty())
+                            {
+                                binding.angle.setVisibility(View.VISIBLE);
+                                binding.compass.setVisibility(View.VISIBLE);
+                            }
+                        } catch (JSONException e) {
+                            Log.e("error",e.getMessage());
+                        }
+                    }, error -> {
+                        Log.e("Error",error.getMessage());
+                    });
+                    requestQueue1.add(jsonObjectRequest);
                 }
             }
         });
@@ -185,50 +215,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    public void CalculateLookUpAngle(Double latitude ,Double longitude,Double satlat,Double SatLong,Double sataltitude)
-    {
-        double groundLatRad = Math.toRadians(latitude);
-        double groundLonRad = Math.toRadians(longitude);
-        double satLatRad = Math.toRadians(satlat);
-        double satLonRad = Math.toRadians(SatLong);
-
-        double earthRadius = 6378.0; // km
-        double satRadius = earthRadius+sataltitude;
-        // Calculate the range vector components in the Earth-centered, Earth-fixed (ECEF) frame.
-        double groundX = earthRadius * Math.cos(groundLatRad) * Math.cos(groundLonRad);
-        double groundY = earthRadius * Math.cos(groundLatRad) * Math.sin(groundLonRad);
-        double groundZ = earthRadius * Math.sin(groundLatRad);
-        double satX = satRadius * Math.cos(satLatRad) * Math.cos(satLonRad);
-        double satY = satRadius * Math.cos(satLatRad) * Math.sin(satLonRad);
-        double satZ = satRadius * Math.sin(satLatRad);
-        // Calculate the range vector (satellite - ground).
-        double rangeX = satX - groundX;
-        double rangeY = satY - groundY;
-        double rangeZ = satZ - groundZ;
-        // Calculate the local horizontal coordinate system (LHCS) unit vectors.
-        double eastX = -Math.sin(groundLonRad);
-        double eastY = Math.cos(groundLonRad);
-        double eastZ = 0.0;
-        double northX = -Math.sin(groundLatRad) * Math.cos(groundLonRad);
-        double northY = -Math.sin(groundLatRad) * Math.sin(groundLonRad);
-        double northZ = Math.cos(groundLatRad);
-        double upX = Math.cos(groundLatRad) * Math.cos(groundLonRad);
-        double upY = Math.cos(groundLatRad) * Math.sin(groundLonRad);
-        double upZ = Math.sin(groundLatRad);
-        // Calculate the azimuth and elevation.
-        double east = rangeX * eastX + rangeY * eastY + rangeZ * eastZ;
-        double north = rangeX * northX + rangeY * northY + rangeZ * northZ;
-        double up = rangeX * upX + rangeY * upY + rangeZ * upZ;
-        double azimuth = Math.toDegrees(Math.atan2(east, north));
-        if (azimuth < 0) {
-            azimuth += 360.0;
-        }
-        double range = Math.sqrt(rangeX * rangeX + rangeY * rangeY + rangeZ * rangeZ);
-        double elevation = Math.toDegrees(Math.asin(up / range));
-        ((TextView)findViewById(R.id.azimuth)).setText(String.format("%.9f", azimuth));
-        ((TextView)findViewById(R.id.elevation)).setText(String.format("%.9f",elevation));
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
