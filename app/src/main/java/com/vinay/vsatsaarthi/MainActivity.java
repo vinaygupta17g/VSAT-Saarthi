@@ -71,13 +71,11 @@ public class MainActivity extends AppCompatActivity {
         });
         ArrayAdapter<String> adapter=new ArrayAdapter<>(this,R.layout.spinner_item,satname);
         binding.spinner.setAdapter(adapter);
-
+        satname.add("Satellite");
         //API IMPLEMENTATION
         RequestQueue requestQueue= Volley.newRequestQueue(MainActivity.this);
         JsonArrayRequest jsonArrayRequest =new JsonArrayRequest(Request.Method.GET, "https://satellite-detail.onrender.com/satellite/getsatellite", null, response -> {
             try {
-                satname.clear();
-                satname.add("Satellite");
                 for (int i=0;i<response.length();i++)
                 {
                     JSONObject jsonObject=response.getJSONObject(i);
