@@ -6,227 +6,320 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/star"
+    android:background="@color/black"
     android:orientation="vertical">
+
+    <!-- Include the custom toolbar. Make sure toolbar.xml exists in res/layout/ -->
     <include layout="@layout/toolbar"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
         android:scrollIndicators="none">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <RelativeLayout
-                android:layout_width="1000dp"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card"
+                android:layout_width="150dp"
                 android:layout_height="150dp"
-                tools:context=".MainActivity">
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="100dp"
-                    app:cardCornerRadius="100dp"
-                    android:elevation="30dp"
-                    app:cardElevation="30dp"
-                    android:outlineSpotShadowColor="@color/white"
-                    android:outlineAmbientShadowColor="@color/white"
-                    tools:targetApi="p">
-                    <ImageView
-                        android:id="@+id/earth"
-                        android:layout_width="1000dp"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/world"
-                        android:scaleType="centerCrop"/>
-                </com.google.android.material.card.MaterialCardView>
-
-            </RelativeLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="40dp"
-                android:orientation="horizontal">
-                <EditText
-                    android:id="@+id/userlongitude"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="100dp"
+                app:cardCornerRadius="100dp"
+                android:elevation="30dp"
+                app:cardElevation="30dp"
+                android:outlineSpotShadowColor="@color/white"
+                android:outlineAmbientShadowColor="@color/white"
+                tools:targetApi="p">
+                <ImageView
+                    android:id="@+id/earth"
+                    android:layout_width="1000dp"
                     android:layout_height="match_parent"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/background_bg"
-                    android:hint="Longitude"
-                    android:inputType="numberDecimal"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:layout_marginRight="10dp"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white" />
-
-                <EditText
-                    android:id="@+id/userLatitude"
-                    android:layout_height="match_parent"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/background_bg"
-                    android:hint="Latitude"
-                    android:inputType="numberDecimal"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white" />
-            </LinearLayout>
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/setlonglat"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/btn_bg"
-                android:text="get location"
-                android:textSize="17dp"
-                android:textColor="@color/white"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal">
-                <Spinner
-                    android:id="@+id/spinner"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="40dp"
-                    android:popupBackground="@color/black"
-                    android:background="@drawable/background_bg"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:padding="10dp"
-                    android:textColor="@color/white"
-                    android:text="OR"/>
-                <Spinner
-                    android:id="@+id/satdish"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="40dp"
-                    android:popupBackground="@color/black"
-                    android:background="@drawable/background_bg"/>
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/satLongitude"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/background_bg"
-                android:paddingLeft="10dp"
-                android:hint="Satellite Longitude"
-                android:paddingTop="5dp"
-                android:paddingRight="10dp"
-                android:textSize="20dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                    android:src="@drawable/world"
+                    android:scaleType="centerCrop"/>
+            </com.google.android.material.card.MaterialCardView>
+            <!-- User Location Input Section -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_marginTop="20dp"
-                android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="8dp"
+                app:cardBackgroundColor="@color/card_background">
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:paddingLeft="10dp"
-                        android:text="Latitude : "
-                        android:textSize="20dp"
-                        android:textColor="@color/white" />
-                    <TextView
-                        android:id="@+id/satlatitude"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:textSize="20dp"
-                        android:textColor="@color/white" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:paddingLeft="10dp"
-                        android:text="Altitude : "
-                        android:textSize="20dp"
-                        android:textColor="@color/white" />
-                    <TextView
-                        android:id="@+id/sataltitude"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:textSize="20dp"
-                        android:textColor="@color/white" />
-                </LinearLayout>
-            </LinearLayout>
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Your Location"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="12dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="12dp">
+                        <EditText
+                            android:id="@+id/userlongitude"
+                            android:layout_height="48dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/rounded_container"
+                            android:hint="Longitude"
+                            android:inputType="numberDecimal|numberSigned"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:layout_marginEnd="8dp"
+                            android:textColor="@color/text_input_text"
+                            android:textColorHint="@color/text_input_hint"
+                            android:maxLines="1"
+                            android:singleLine="true"/>
+
+                        <EditText
+                            android:id="@+id/userLatitude"
+                            android:layout_height="48dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/rounded_container"
+                            android:hint="Latitude"
+                            android:inputType="numberDecimal|numberSigned"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:textColor="@color/text_input_text"
+                            android:textColorHint="@color/text_input_hint"
+                            android:maxLines="1"
+                            android:singleLine="true"/>
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/setlonglat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btn_bg"
+                        android:text="GET CURRENT LOCATION"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:paddingVertical="12dp"
+                        android:textAllCaps="true"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Satellite Selection Section -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="8dp"
+                app:cardBackgroundColor="@color/card_background">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Select Satellite"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="12dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="12dp">
+                        <Spinner
+                            android:id="@+id/spinner"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="48dp"
+                            android:popupBackground="@color/card_background"
+                            android:background="@drawable/rounded_container"
+                            android:layout_marginEnd="8dp"
+                            android:prompt="@string/select_satellite_prompt"/> <!-- Define this string in strings.xml -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:paddingHorizontal="8dp"
+                            android:textColor="@color/separator_color"
+                            android:textStyle="bold"
+                            android:text="OR"/>
+                        <Spinner
+                            android:id="@+id/satdish"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="48dp"
+                            android:popupBackground="@color/card_background"
+                            android:background="@drawable/rounded_container"
+                            android:layout_marginStart="8dp"
+                            android:prompt="@string/select_dish_prompt"/> <!-- Define this string in strings.xml -->
+                    </LinearLayout>
+
+                    <!-- Satellite Longitude Display -->
+                    <TextView
+                        android:id="@+id/satLongitude"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@drawable/rounded_container"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:gravity="center_vertical"
+                        android:hint="Satellite Longitude"
+                        android:textSize="16sp"
+                        android:textColor="@color/text_input_text"
+                        android:textColorHint="@color/text_input_hint"
+                        android:layout_marginBottom="12dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <!-- Satellite Latitude Display -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@drawable/rounded_container"
+                            android:padding="12dp"
+                            android:layout_marginEnd="8dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Latitude :"
+                                android:textSize="14sp"
+                                android:textColor="@color/white"
+                                android:layout_marginBottom="4dp"/>
+                            <TextView
+                                android:id="@+id/satlatitude"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="18sp"
+                                android:textColor="@color/satellite_value_color"
+                                tools:text="0.0° N"/>
+                        </LinearLayout>
+                        <!-- Satellite Altitude Display -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@drawable/rounded_container"
+                            android:padding="12dp"
+                            android:layout_marginStart="8dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Altitude :"
+                                android:textSize="14sp"
+                                android:textColor="@color/white"
+                                android:layout_marginBottom="4dp"/>
+                            <TextView
+                                android:id="@+id/sataltitude"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="18sp"
+                                android:textColor="@color/satellite_value_color"
+                                tools:text="35786 km"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Calculate Button -->
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/calculate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
                 android:background="@drawable/btn_bg"
-                android:text="Calculate Look Up Angle"
-                android:textSize="16dp"
-                android:textColor="@color/white"/>
+                android:text="CALCULATE LOOK UP ANGLE"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:paddingVertical="12dp"
+                android:textAllCaps="true"/>
+
+            <!-- Angle Display Section (Initially hidden) -->
             <LinearLayout
                 android:id="@+id/angle"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="15dp"
-                android:visibility="gone"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal"
+                android:visibility="gone"> <!-- for preview purposes -->
+
                 <TextView
                     android:id="@+id/elevation"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/background_bg"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingRight="10dp"
-                    android:textSize="20dp"
-                    android:textColor="@color/white"
-                    android:layout_marginRight="10dp"
-                    android:textColorHint="@color/white" />
+                    android:layout_height="48dp"
+                    android:background="@drawable/rounded_container"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:textColor="@color/user_value_color"
+                    android:layout_marginEnd="8dp"
+                    android:hint="Elevation"
+                    android:textColorHint="@color/text_input_hint"
+                    tools:text="Elevation: 45.0°"/>
                 <TextView
                     android:id="@+id/azimuth"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/background_bg"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp"
-                    android:textSize="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white" />
+                    android:layout_height="48dp"
+                    android:background="@drawable/rounded_container"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/user_value_color"
+                    android:hint="Azimuth"
+                    android:textColorHint="@color/text_input_hint"
+                    tools:text="Azimuth: 180.0°"/>
             </LinearLayout>
+
+            <!-- Get Compass Button (Initially hidden) -->
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/compass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginBottom="16dp"
                 android:background="@drawable/btn_bg"
-                android:text="Get Compass"
+                android:text="GET COMPASS"
                 android:textColor="@color/white"
-                android:textSize="18dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 android:visibility="gone"
-                android:textStyle="bold|italic" />
+                android:paddingVertical="12dp"
+                android:textAllCaps="true" /> <!-- for preview purposes -->
+
         </LinearLayout>
     </ScrollView>
+
+    <!-- Navigation Bar. Make sure navbar.xml exists in res/layout/ -->
     <include layout="@layout/navbar"/>
+
 </LinearLayout>

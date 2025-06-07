@@ -1,170 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    android:background="@drawable/star"
-    tools:context=".CompassActivity">
+    android:background="@color/black">
     <include layout="@layout/toolbar"/>
-
-    <ImageView
-        android:id="@+id/compass"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_below="@+id/main1"
-        android:layout_marginTop="90dp"
-        app:tint="#FFFFFF"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/compass" />
-
+    <!-- Satellite Azimuth & Elevation Section -->
     <LinearLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:orientation="horizontal">
+
+        <!-- Satellite Azimuth Card -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="@drawable/rounded_container"
+            android:orientation="vertical"
+            android:padding="5dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:paddingLeft="10dp"
-                android:text="Azimuth : "
-                android:textSize="20dp"
-                android:textColor="@color/white" />
+                android:layout_height="wrap_content"
+                android:text="Satellite Azimuth"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:layout_gravity="center_horizontal"/>
             <TextView
                 android:id="@+id/satazismuth"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:textSize="20dp"
-                android:textColor="@color/white" />
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textColor="@color/satellite_value_color"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center_horizontal"
+                tools:text="180.5°"/>
         </LinearLayout>
+
+        <View
+            android:layout_width="16dp"
+            android:layout_height="0dp"/>
+
+        <!-- Satellite Elevation Card -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="@drawable/rounded_container"
+            android:orientation="vertical"
+            android:padding="5dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:paddingLeft="30dp"
-                android:text="Elevation : "
-                android:textSize="20dp"
-                android:textColor="@color/white" />
+                android:layout_height="wrap_content"
+                android:text="Satellite Elevation"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:layout_gravity="center_horizontal"/>
             <TextView
                 android:id="@+id/satelevation"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:textSize="20dp"
-                android:textColor="@color/white" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textColor="@color/satellite_value_color"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center_horizontal"
+                tools:text="45.2°"/>
         </LinearLayout>
     </LinearLayout>
 
+    <!-- User Azimuth & Elevation Section -->
     <LinearLayout
         android:id="@+id/main1"
-        android:layout_below="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/main"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:orientation="horizontal">
+
+        <!-- User Azimuth Card -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="@drawable/rounded_container"
+            android:orientation="vertical"
+            android:padding="5dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:paddingLeft="10dp"
-                android:text="Azimuth : "
-                android:textSize="20dp"
-                android:textColor="@color/white" />
+                android:layout_height="wrap_content"
+                android:text="User Azimuth"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:layout_gravity="center_horizontal"/>
             <TextView
                 android:id="@+id/userazismuth"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:textSize="20dp"
-                android:textColor="@color/white" />
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textColor="@color/user_value_color"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center_horizontal"
+                tools:text="90.0°"/>
         </LinearLayout>
+
+        <View
+            android:layout_width="16dp"
+            android:layout_height="0dp"/>
+
+        <!-- User Elevation Card -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="@drawable/rounded_container"
+            android:orientation="vertical"
+            android:padding="5dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:paddingLeft="30dp"
-                android:text="Elevation : "
-                android:textSize="20dp"
-                android:textColor="@color/white" />
+                android:layout_height="wrap_content"
+                android:text="User Elevation"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:layout_gravity="center_horizontal"/>
             <TextView
                 android:id="@+id/userelevation"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:textSize="20dp"
-                android:textColor="@color/white" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textColor="@color/user_value_color"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center_horizontal"
+                tools:text="60.1°"/>
         </LinearLayout>
     </LinearLayout>
 
+    <!-- Compass Image -->
+    <ImageView
+        android:id="@+id/compass"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:layout_below="@+id/main1"
+        android:layout_marginTop="16dp"
+        app:tint="#FFFFFF"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/compass"/>
 
-
+    <!-- Longitude & Latitude Section -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="90dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:orientation="horizontal">
+
+        <!-- Longitude Card -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:background="@drawable/rounded_container"
+            android:padding="16dp"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:paddingLeft="10dp"
-                android:text="Longitude : "
-                android:textSize="20dp"
-                android:textColor="#FFEB3B" />
+                android:layout_height="wrap_content"
+                android:text="Longitude"
+                android:textSize="16sp"
+                android:textColor="@color/location_value_color" />
             <TextView
                 android:id="@+id/longitude"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:textSize="20dp"
-                android:textColor="@color/white" />
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_marginTop="8dp"
+                tools:text="77.2090° E"/>
         </LinearLayout>
+
+        <View
+            android:layout_width="16dp"
+            android:layout_height="0dp"/>
+
+        <!-- Latitude Card -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:background="@drawable/rounded_container"
+            android:padding="16dp"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:text="Latitude : "
-                android:textSize="20dp"
-                android:textColor="#FFEB3B" />
+                android:layout_height="wrap_content"
+                android:text="Latitude"
+                android:textSize="16sp"
+                android:textColor="@color/location_value_color" />
             <TextView
                 android:id="@+id/latitude"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:textSize="20dp"
-                android:textColor="@color/white" />
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_marginTop="8dp"
+                tools:text="28.6139° N"/>
         </LinearLayout>
     </LinearLayout>
+
+    <!-- Navigation Bar (as per your original code) -->
     <include layout="@layout/navbar"/>
 
 </RelativeLayout>

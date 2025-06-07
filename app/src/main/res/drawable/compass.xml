@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+    <!-- Outer Circle -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:pathData="M50,50 m -45,0 a 45,45 0 1,0 90,0 a 45,45 0 1,0 -90,0"/>
+
+    <!-- Inner Circle / Base of the compass face -->
+    <path
+        android:fillColor="#1AFFFFFF"
+        android:strokeColor="#CCCCCC"
+        android:strokeWidth="1.5"
+        android:pathData="M50,50 m -38,0 a 38,38 0 1,0 76,0 a 38,38 0 1,0 -76,0"/>
+
+    <!-- North (Red Arrow Part) -->
+    <path
+        android:fillColor="#FF0000"
+        android:pathData="M50,15 L57,28 L43,28 Z"/>
+
+    <!-- North (White Line Extension) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M50,28 L50,45"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"/>
+
+    <!-- South (Grey Arrow Part) -->
+    <path
+        android:fillColor="#606060"
+        android:pathData="M50,85 L57,72 L43,72 Z"/>
+
+    <!-- South (White Line Extension) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M50,72 L50,55"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"/>
+
+    <!-- East Marker -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.5"
+        android:pathData="M85,50 L75,50"/>
+
+    <!-- West Marker -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.5"
+        android:pathData="M15,50 L25,50"/>
+
+    <!-- Center Dot -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M50,50 m -3,0 a 3,3 0 1,0 6,0 a 3,3 0 1,0 -6,0"/>
+
+</vector>

@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                     if(location!=null){
-                        binding.setlonglat.setBackgroundDrawable(getDrawable(R.drawable.btn_clicked_bg));
                         binding.userlongitude.setText(location.getLongitude()+"");
                         binding.userLatitude.setText(location.getLatitude()+"");
                     }
@@ -78,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         JsonArrayRequest jsonArrayRequest =new JsonArrayRequest(Request.Method.GET, "https://satellite-detail.onrender.com/satellite/getsatellite", null, response -> {
             try {
                 satname.clear();
-                satname.add("Select Satellite");
+                satname.add("Satellite");
                 for (int i=0;i<response.length();i++)
                 {
                     JSONObject jsonObject=response.getJSONObject(i);
@@ -124,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        dishname.add("Select Service Provider ----");
+        dishname.add("Provider");
         dishname.add("Dish TV");
         dishname.add("DD Free Dish");
         dishname.add("TATA Play");
@@ -154,7 +153,6 @@ public class MainActivity extends AppCompatActivity {
                     binding.satlatitude.setError("");
                 else
                 {
-                    binding.calculate.setBackgroundDrawable(getDrawable(R.drawable.btn_clicked_bg));
                     RequestQueue requestQueue1 = Volley.newRequestQueue(MainActivity.this);
                     JSONObject jsonObject =new JSONObject();
                     try {
@@ -199,7 +197,6 @@ public class MainActivity extends AppCompatActivity {
                 else if(binding.azimuth.getText().toString().isEmpty())
                     binding.azimuth.setError("");
                 else{
-                    binding.compass.setBackgroundDrawable(getDrawable(R.drawable.btn_clicked_bg));
                     Intent intent=new Intent(MainActivity.this,CompassActivity.class);
                     intent.putExtra("Azismuth",binding.azimuth.getText().toString());
                     intent.putExtra("Elevation",binding.elevation.getText().toString());
