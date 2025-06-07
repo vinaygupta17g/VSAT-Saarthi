@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -176,6 +177,12 @@ public class MainActivity extends AppCompatActivity {
                             {
                                 binding.angle.setVisibility(View.VISIBLE);
                                 binding.compass.setVisibility(View.VISIBLE);
+                                ((ScrollView)findViewById(R.id.scrollbar)).post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        ((ScrollView)findViewById(R.id.scrollbar)).fullScroll(View.FOCUS_DOWN);
+                                    }
+                                });
                             }
                         } catch (JSONException e) {
                             Log.e("error",e.getMessage());
