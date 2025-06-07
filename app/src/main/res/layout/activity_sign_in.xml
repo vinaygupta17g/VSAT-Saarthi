@@ -1,88 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:id="@+id/main"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:layout_gravity="center"
-android:gravity="center"
-android:orientation="vertical"
-tools:context=".SignUpActivity">
-
-<androidx.cardview.widget.CardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
     android:background="@color/black"
-    android:layout_margin="10dp"
-    android:elevation="10dp"
-    app:cardCornerRadius="10dp">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:orientation="vertical">
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/isro"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="21dp"
-            android:layout_marginBottom="45dp"
-            android:text="Log In With VSAT Saarthi"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Username"/>
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="5dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:inputType="textEmailAddress"
-            android:hint="email"
-            android:background="@drawable/signup_bg"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Password"/>
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="5dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:inputType="textPassword"
-            android:hint="password"
-            android:background="@drawable/signup_bg"/>
+    tools:context=".SignInActivity"> <!-- Changed context to SignInActivity assuming this is a login screen -->
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/signin"
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="@color/card_background">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
-            android:text="Login"
-            android:textColor="@color/white"
-            android:background="@drawable/btn_bg"/>
-        <TextView
-            android:id="@+id/forget"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="35dp"
-            android:layout_marginBottom="2dp"
-            android:text="Foreget Password"/>
-        <TextView
-            android:id="@+id/signup"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="2dp"
-            android:text="Register"/>
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:gravity="center">
+
+            <!-- ISRO Logo -->
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:src="@drawable/isro"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="ISRO Logo"/>
+
+            <!-- Title: Log In With VSAT Saarthi -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Log In With VSAT Saarthi"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="32dp"/>
+
+            <!-- Username (Email) Input -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Username"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_marginBottom="4dp"/>
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="16dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:inputType="textEmailAddress"
+                android:hint="Email"
+                android:background="@drawable/input_field_background"
+                android:textColor="@color/text_input_text"
+                android:textColorHint="@color/text_input_hint"
+                android:maxLines="1"
+                android:singleLine="true"
+                tools:hint="youremail@example.com"/>
+
+            <!-- Password Input -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_marginBottom="4dp"/>
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="24dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:inputType="textPassword"
+                android:hint="Password"
+                android:background="@drawable/input_field_background"
+                android:textColor="@color/text_input_text"
+                android:textColorHint="@color/text_input_hint"
+                android:maxLines="1"
+                android:singleLine="true"/>
+
+            <!-- Login Button -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/signin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="LOGIN"
+                android:textColor="@color/white"
+                android:background="@drawable/btn_bg"
+                android:textSize="18sp"
+                android:paddingVertical="12dp"
+                android:textAllCaps="true"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- Forget Password Link -->
+            <TextView
+                android:id="@+id/forget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Forget Password?"
+                android:textColor="@color/link_text_color"
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Register Link -->
+            <TextView
+                android:id="@+id/signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Don't have an account? Register"
+                android:textColor="@color/link_text_color"
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackgroundBorderless"/>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
 </LinearLayout>

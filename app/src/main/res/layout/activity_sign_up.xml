@@ -5,115 +5,173 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
     android:gravity="center"
     android:orientation="vertical"
+    android:background="@color/black"
     tools:context=".SignUpActivity">
 
-    <androidx.cardview.widget.CardView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black"
-        android:layout_margin="10dp"
-        android:elevation="10dp"
-        app:cardCornerRadius="10dp">
-        <LinearLayout
+        android:scrollbars="none"
+        android:paddingVertical="16dp"
+        android:clipToPadding="false">
+
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/isro"/>
-            <TextView
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            app:cardElevation="10dp"
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@color/card_background">
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="21dp"
-                android:layout_marginBottom="45dp"
-                android:text="Register With VSAT Saarthi"/>
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:gravity="center">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="Name" />
-            <EditText
-                android:id="@+id/name"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:inputType="text"
-                android:hint="name"
-                android:background="@drawable/signup_bg"/>
+                <!-- ISRO Logo -->
+                <ImageView
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:src="@drawable/isro"
+                    android:layout_marginBottom="16dp"
+                    android:contentDescription="ISRO Logo"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="13dp"
-                android:text="Mobile" />
-            <EditText
-                android:id="@+id/mobile"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:inputType="number"
-                android:hint="mobile"
-                android:background="@drawable/signup_bg"/>
+                <!-- Title: Register With VSAT Saarthi -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Register With VSAT Saarthi"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="32dp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="13dp"
-                android:text="Email" />
-            <EditText
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:inputType="textEmailAddress"
-                android:hint="email"
-                android:background="@drawable/signup_bg"/>
+                <!-- Name Input -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="4dp"/>
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="16dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:inputType="textPersonName|textCapWords"
+                    android:hint="Full Name"
+                    android:background="@drawable/input_field_background"
+                    android:textColor="@color/text_input_text"
+                    android:textColorHint="@color/text_input_hint"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    tools:text="John Doe"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="13dp"
-                android:text="Password" />
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:inputType="textPassword"
-                android:hint="password"
-                android:background="@drawable/signup_bg"/>
+                <!-- Mobile Input -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mobile Number"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="4dp"/>
+                <EditText
+                    android:id="@+id/mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="16dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:inputType="phone"
+                    android:hint="Mobile Number"
+                    android:background="@drawable/input_field_background"
+                    android:textColor="@color/text_input_text"
+                    android:textColorHint="@color/text_input_hint"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    tools:text="9876543210"/>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/signup"
-                android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_height="wrap_content"
-                android:text="Register"
-                android:textColor="@color/white"
-                android:background="@drawable/btn_bg"/>
+                <!-- Email Input -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="4dp"/>
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="16dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:inputType="textEmailAddress"
+                    android:hint="Email Address"
+                    android:background="@drawable/input_field_background"
+                    android:textColor="@color/text_input_text"
+                    android:textColorHint="@color/text_input_hint"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    tools:text="example@domain.com"/>
 
-            <TextView
-                android:id="@+id/signin"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="35dp"
-                android:layout_marginBottom="2dp"
-                android:text="Login"/>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                <!-- Password Input -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Password"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="4dp"/>
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="24dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:inputType="textPassword"
+                    android:hint="Create Password"
+                    android:background="@drawable/input_field_background"
+                    android:textColor="@color/text_input_text"
+                    android:textColorHint="@color/text_input_hint"
+                    android:maxLines="1"
+                    android:singleLine="true"/>
+
+                <!-- Register Button -->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/signup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="REGISTER"
+                    android:textColor="@color/white"
+                    android:background="@drawable/btn_bg"
+                    android:textSize="18sp"
+                    android:paddingVertical="12dp"
+                    android:textAllCaps="true"
+                    android:layout_marginBottom="24dp"/>
+
+                <!-- Login Link -->
+                <TextView
+                    android:id="@+id/signin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Already have an account? Login"
+                    android:textColor="@color/link_text_color"
+                    android:textSize="16sp"
+                    android:padding="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </ScrollView>
 </LinearLayout>
