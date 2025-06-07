@@ -3,35 +3,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
-    android:layout_height="75sp"
-    android:background="@drawable/star"
-    android:elevation="10dp">
+    android:layout_height="75dp"
+    android:background="@color/toolbar_color"
+    android:elevation="10dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginRight="15dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingEnd="16dp"
+        android:paddingStart="0dp">
+
         <ImageView
-            android:layout_width="80sp"
-            android:layout_height="75sp"
-            android:src="@drawable/isro"/>
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/isro"
+            android:contentDescription="ISRO Logo"
+            android:layout_marginEnd="16dp"/>
+
         <TextView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="17dp"
+            android:textSize="18sp"
             android:textColor="@color/white"
-            android:textStyle="bold|italic"
-            android:text="INDIAN SPACE RESEARCH ORGANISATION"/>
+            android:textStyle="bold"
+            android:text="INDIAN SPACE RESEARCH ORGANISATION"
+            android:maxLines="2"
+            android:ellipsize="end"/>
 
-<!--        <ImageView-->
-<!--            android:layout_width="30sp"-->
-<!--            android:layout_height="30sp"-->
-<!--            android:layout_marginTop="22dp"-->
-<!--            android:src="@drawable/baseline_logout_24"-->
-<!--            app:tint="@color/white"-->
-<!--            android:layout_marginLeft="40dp"/>-->
+        <ImageView
+            android:id="@+id/logout_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/baseline_logout_24"
+            app:tint="@color/white"
+            android:layout_marginStart="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Logout" />
 
     </LinearLayout>
 </androidx.appcompat.widget.Toolbar>

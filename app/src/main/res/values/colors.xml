@@ -14,4 +14,8 @@
     <color name="location_value_color">#FFEB3B</color> <!-- Yellow for location data -->
     <color name="toolbar_color">#1A1A1A</color> <!-- Slightly lighter dark grey for toolbar -->
     <color name="button_background_pressed">#0056B3</color>
+
+    <color name="splash_background_dark">#121212</color> <!-- A very dark grey/black -->
+    <color name="splash_text_primary">#E0E0E0</color> <!-- Off-white for main text -->
+    <color name="splash_text_accent">#03A9F4</color> <!-- A subtle blue accent for "Tech Titans" -->
 </resources>
