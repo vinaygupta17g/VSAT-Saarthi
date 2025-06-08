@@ -37,7 +37,6 @@ public class SignInActivity extends AppCompatActivity {
                   binding.password.setError("");
               else
               {
-                  binding.signin.setBackgroundDrawable(getDrawable(R.drawable.btn_clicked_bg));
                   auth.signInWithEmailAndPassword(binding.email.getText().toString(),binding.password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                       @Override
                       public void onComplete(@NonNull Task<AuthResult> task) {
