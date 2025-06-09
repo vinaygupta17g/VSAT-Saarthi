@@ -33,6 +33,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
+    public static final String URL="https://satellite-detail.onrender.com/satellite/getsatellite";
     ArrayList<String> satname=new ArrayList<>();
     ArrayList<String> dishname=new ArrayList<>();
     Location location;
@@ -51,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
         objectAnimator2.setRepeatMode(ObjectAnimator.REVERSE);
         objectAnimator2.setRepeatCount(ObjectAnimator.INFINITE);
         objectAnimator2.start();
+        satname.add("Satellite");
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, R.layout.spinner_item, satname);
+        binding.spinner.setAdapter(adapter);
         binding.setlonglat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,24 +74,22 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        ArrayAdapter<String> adapter=new ArrayAdapter<>(this,R.layout.spinner_item,satname);
-        binding.spinner.setAdapter(adapter);
-        satname.add("Satellite");
         //API IMPLEMENTATION
         RequestQueue requestQueue= Volley.newRequestQueue(MainActivity.this);
-        JsonArrayRequest jsonArrayRequest =new JsonArrayRequest(Request.Method.GET, "https://satellite-detail.onrender.com/satellite/getsatellite", null, response -> {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, URL, null, response -> {
             try {
-                for (int i=0;i<response.length();i++)
-                {
-                    JSONObject jsonObject=response.getJSONObject(i);
-                    String name=jsonObject.getString("satname");
-                    satname.add(name);
-                    adapter.notifyDataSetChanged();
+                for (int i = 0; i < response.length(); i++) {
+                    JSONObject jsonObject = response.getJSONObject(i);
+                    satname.add(jsonObject.getString("satname"));
+                    Log.d("name",jsonObject.getString("satname"));
                 }
+
             } catch (JSONException e) {
-                Log.e("Error message",e.getMessage()+"");
+                Log.d("Error",e.getMessage());
             }
-        }, error -> Log.d("Error message",error.getMessage()+""));
+        }, error ->Log.d("error",error.getMessage()));
+
+        requestQueue.add(jsonArrayRequest);
         requestQueue.add(jsonArrayRequest);
 
         binding.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -95,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 final String selectedItem=parent.getItemAtPosition(position).toString();
                 RequestQueue requestQueue= Volley.newRequestQueue(MainActivity.this);
-                JsonArrayRequest jsonArrayRequest =new JsonArrayRequest(Request.Method.GET, "https://satellite-detail.onrender.com/satellite/getsatellite", null, response -> {
+                JsonArrayRequest jsonArrayRequest =new JsonArrayRequest(Request.Method.GET,URL, null, response -> {
                     try {
                         for (int i=0;i<response.length();i++)
                         {
@@ -131,7 +133,10 @@ public class MainActivity extends AppCompatActivity {
         binding.satdish.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                binding.spinner.setSelection(adapter.getPosition(satName(parent.getItemAtPosition(position).toString())));
+                int selectedIndex = satname.indexOf(satName(parent.getItemAtPosition(position).toString()));
+                if (selectedIndex != -1) {
+                    binding.spinner.setSelection(selectedIndex);
+                }
             }
 
             @Override
