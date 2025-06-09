@@ -15,9 +15,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.material.tabs.TabLayout;
-import com.google.firebase.auth.FirebaseAuth;
 import com.vinay.vsatsaarthi.databinding.ActivityCompassBinding;
 public class CompassActivity extends AppCompatActivity implements SensorEventListener {
 ActivityCompassBinding binding;
@@ -32,7 +29,6 @@ ActivityCompassBinding binding;
         super.onCreate(savedInstanceState);
         binding=ActivityCompassBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        TabLayout tabLayout = findViewById(R.id.tablayout);
         setSupportActionBar(findViewById(R.id.toolbar));
         Intent intent=getIntent();
         Double azismuth=Double.parseDouble(intent.getStringExtra("Azismuth"));
@@ -103,17 +99,14 @@ ActivityCompassBinding binding;
         {
             Toast.makeText(this,e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-            if(flag) mediaPlayer.start();
-            else mediaPlayer.stop();
+        if(flag) mediaPlayer.start();
+        else mediaPlayer.stop();
     }
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         Intent intent = new Intent(CompassActivity.this,MainActivity.class);

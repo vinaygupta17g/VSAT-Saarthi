@@ -42,22 +42,12 @@ public class SignInActivity extends AppCompatActivity {
                       public void onComplete(@NonNull Task<AuthResult> task) {
                           if(task.isSuccessful())
                           {
-                              if(binding.email.getText().toString().equals("vinaykumarmitrc@gmail.com")&&binding.password.getText().toString().equals("admin@123"))
-                              {
-                                  intent=new Intent(context,AdminActivity.class);
-                                  startActivity(intent);
-                                  finish();
-                              }
-                              else {
                                   intent = new Intent(context, MainActivity.class);
                                   startActivity(intent);
                                   finish();
-                              }
                           }
                           else
-                          {
                               Toast.makeText(context,task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                          }
                       }
                   });
               }
@@ -65,18 +55,9 @@ public class SignInActivity extends AppCompatActivity {
         });
         if(auth.getCurrentUser()!=null)
         {
-            if(auth.getCurrentUser().getEmail().equals("vinaykumarmitrc@gmail.com"))
-            {
-                intent=new Intent(context,AdminActivity.class);
-                startActivity(intent);
-                finish();
-            }
-            else {
                 intent=new Intent(context,MainActivity.class);
                 startActivity(intent);
                 finish();
-            }
-
         }
         binding.signup.setOnClickListener(new View.OnClickListener() {
             @Override

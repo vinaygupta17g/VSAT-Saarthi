@@ -17,9 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.vinay.vsatsaarthi.Adapters.SatelliteAdapter;
 import com.vinay.vsatsaarthi.Models.SatelliteModel;
 import com.vinay.vsatsaarthi.databinding.FragmentSatellitesBinding;
-
 import java.util.ArrayList;
-
 public class Satellites extends Fragment {
     FragmentSatellitesBinding binding;
     ArrayList<SatelliteModel> model=new ArrayList<>();
@@ -46,10 +44,8 @@ public class Satellites extends Fragment {
                 }
                 adapter.notifyDataSetChanged();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
         return binding.getRoot();
