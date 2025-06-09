@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         objectAnimator2.setRepeatCount(ObjectAnimator.INFINITE);
         objectAnimator2.start();
         satname.add("Satellite");
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, R.layout.spinner_item, satname);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this,R.layout.spinner_item, satname);
         binding.spinner.setAdapter(adapter);
         binding.setlonglat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,30 +68,14 @@ public class MainActivity extends AppCompatActivity {
                     if(location!=null){
                         binding.userlongitude.setText(location.getLongitude()+"");
                         binding.userLatitude.setText(location.getLatitude()+"");
+                        getname();
                     }
                     else
                         Toast.makeText(MainActivity.this, "Give Access for location", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-        //API IMPLEMENTATION
-        RequestQueue requestQueue= Volley.newRequestQueue(MainActivity.this);
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, URL, null, response -> {
-            try {
-                for (int i = 0; i < response.length(); i++) {
-                    JSONObject jsonObject = response.getJSONObject(i);
-                    satname.add(jsonObject.getString("satname"));
-                    Log.d("name",jsonObject.getString("satname"));
-                }
-
-            } catch (JSONException e) {
-                Log.d("Error",e.getMessage());
-            }
-        }, error ->Log.d("error",error.getMessage()));
-
-        requestQueue.add(jsonArrayRequest);
-        requestQueue.add(jsonArrayRequest);
-
+        getname();
         binding.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -240,5 +224,25 @@ public class MainActivity extends AppCompatActivity {
         else if (serviceprovidername.equals("TATA Play"))
             return  satName="GSAT-24";
         return satName;
+    }
+
+    public void getname()
+    {
+        satname.clear();
+        satname.add("Satellite");
+        //API IMPLEMENTATION
+        RequestQueue requestQueue= Volley.newRequestQueue(MainActivity.this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, URL, null, response -> {
+            try {
+                for (int i = 0; i < response.length(); i++) {
+                    JSONObject jsonObject = response.getJSONObject(i);
+                    satname.add(jsonObject.getString("satname"));
+                }
+
+            } catch (JSONException e) {
+                Log.d("Error",e.getMessage());
+            }
+        }, error ->Log.d("error",error.getMessage()));
+        requestQueue.add(jsonArrayRequest);
     }
 }
