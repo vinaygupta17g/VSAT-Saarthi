@@ -43,10 +43,9 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
-    public static final String URL = "https://satellite-detail.onrender.com/satellite/getsatellite";
+    public static final String URL = "http://ec2-3-7-254-184.ap-south-1.compute.amazonaws.com:5001/satellite/getsatellite";
     ArrayList<String> satname = new ArrayList<>();
     ArrayList<String> dishname = new ArrayList<>();
-    Location location;
     ImageView world;
 
     @Override
