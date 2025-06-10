@@ -178,8 +178,8 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             String azimuth = response.getString("azimuth");
                             String elevation = response.getString("elevation");
-                            azimuth = azimuth.replaceAll("(\\.\\d{9})\\d+", "$1");
-                            elevation = elevation.replaceAll("(\\.\\d{9})\\d+", "$1");
+                            azimuth = azimuth.replaceAll("(\\.\\d{5})\\d+", "$1");
+                            elevation = elevation.replaceAll("(\\.\\d{5})\\d+", "$1");
                             ((TextView) findViewById(R.id.azimuth)).setText(azimuth);
                             ((TextView) findViewById(R.id.elevation)).setText(elevation);
                             if (!azimuth.isEmpty() && !elevation.isEmpty()) {
