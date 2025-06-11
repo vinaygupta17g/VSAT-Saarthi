@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
                     } catch (Exception e) {
                         Log.e("Error message", e.getMessage() + "");
                     }
-                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, "http://ec2-3-7-254-184.ap-south-1.compute.amazonaws.com/angle/calculatelookupangle", jsonObject, response -> {
+                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, "http://ec2-3-7-254-184.ap-south-1.compute.amazonaws.com:5001/angle/calculatelookupangle", jsonObject, response -> {
                         try {
                             String azimuth = response.getString("azimuth");
                             String elevation = response.getString("elevation");
