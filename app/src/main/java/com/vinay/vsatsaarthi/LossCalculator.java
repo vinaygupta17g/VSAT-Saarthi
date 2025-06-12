@@ -37,6 +37,24 @@ public class LossCalculator extends Fragment {
 
             }
         });
+        binding.calcgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(binding.diameter.getText().toString().isEmpty())
+                binding.diameter.setError("");
+                else if(binding.frequency.getText().toString().isEmpty())
+                    binding.frequency.setError("");
+                else if(binding.wavelength.getText().toString().isEmpty())
+                    binding.wavelength.setError("");
+                else{
+                    binding.root1.setVisibility(View.VISIBLE);
+                    binding.root.setVisibility(View.VISIBLE);
+                    double gain=0.7*(22/7)*(22/7)*(Math.pow((Double.parseDouble(binding.diameter.getText().toString()))/(Double.parseDouble(binding.wavelength.getText().toString())),2));
+                    int gaininGHZ=(int)Math.floor(10*Math.log10(gain));
+                    binding.gain.setText(gaininGHZ+"");
+                }
+            }
+        });
         return binding.getRoot();
     }
 }
