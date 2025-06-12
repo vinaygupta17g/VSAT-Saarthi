@@ -55,6 +55,25 @@ public class LossCalculator extends Fragment {
                 }
             }
         });
+        binding.symbolrate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(binding.datarate.getText().toString().isEmpty())
+                binding.datarate.setError("");
+                else if(binding.modulationfactor.getText().toString().isEmpty())
+                    binding.modulationfactor.setError("");
+                else if(binding.fec.getText().toString().isEmpty())
+                    binding.fec.setError("");
+                else
+                {
+                    Double sr = (Double.parseDouble(binding.datarate.getText().toString()))/((Double.parseDouble(binding.modulationfactor.getText().toString()))*(Double.parseDouble(binding.fec.getText().toString())));
+                    String symbol_rate = String.format("%.7f ",sr);
+                    binding.sr1.setVisibility(View.VISIBLE);
+                    binding.sr2.setVisibility(View.VISIBLE);
+                    binding.srrate.setText(symbol_rate);
+                }
+            }
+        });
         return binding.getRoot();
     }
 }
