@@ -15,6 +15,7 @@ public class LossCalculator extends Fragment {
                              Bundle savedInstanceState) {
 
         binding =FragmentLossCalculatorBinding.inflate(inflater, container, false);
+
         return binding.getRoot();
     }
 }
