@@ -339,7 +339,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:background="@drawable/btn_bg"
-        android:text="GET COMPASS"
+        android:text="GET SATELLITE BY COMPASS"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
