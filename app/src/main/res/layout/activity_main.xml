@@ -351,14 +351,4 @@
     </ScrollView>
 
 <include layout="@layout/navbar"/>
-
-<ProgressBar
-android:id="@+id/loadingProgressBar"
-style="?android:attr/progressBarStyle"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:layout_gravity="center"
-android:indeterminateTint="@color/white"
-android:visibility="gone" />
-
     </LinearLayout>
