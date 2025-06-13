@@ -8,9 +8,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.vinay.vsatsaarthi.databinding.FragmentLossCalculatorBinding;
-
 public class LossCalculator extends Fragment {
     FragmentLossCalculatorBinding binding;
     @Override
@@ -71,6 +69,27 @@ public class LossCalculator extends Fragment {
                     binding.sr1.setVisibility(View.VISIBLE);
                     binding.sr2.setVisibility(View.VISIBLE);
                     binding.srrate.setText(symbol_rate);
+                }
+            }
+        });
+        binding.calcfspl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(binding.distance.getText().toString().isEmpty())
+                    binding.distance.setError("");
+                else if(binding.flossfrequency.getText().toString().isEmpty())
+                    binding.flossfrequency.setError("");
+                else if(binding.transmitgain.getText().toString().isEmpty())
+                    binding.transmitgain.setError("");
+                else if(binding.receivegain.getText().toString().isEmpty())
+                    binding.receivegain.setError("");
+                else
+                {
+                    binding.fspl1.setVisibility(View.VISIBLE);
+                    binding.fspl2.setVisibility(View.VISIBLE);
+                    double fspl1 = 20 * Math.log10(Double.parseDouble(binding.distance.getText().toString())) + 20 * Math.log10(Double.parseDouble(binding.flossfrequency.getText().toString())*Math.pow(10,9)) + 20 * Math.log10((4 * Math.PI) /(3*Math.pow(10,8)))-(Double.parseDouble(binding.transmitgain.getText().toString()))-(Double.parseDouble(binding.receivegain.getText().toString()));
+                    String fspl =String.format("%.2f",fspl1);
+                    binding.fspl.setText(fspl);
                 }
             }
         });
