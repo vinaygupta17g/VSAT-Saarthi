@@ -9,6 +9,12 @@
     android:background="@color/black"
     android:orientation="vertical">
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="com.vinay.vsatsaarthi.Fragments.LossCalculator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <include layout="@layout/toolbar"/>
 
     <ScrollView

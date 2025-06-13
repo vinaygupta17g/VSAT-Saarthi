@@ -8,7 +8,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="@color/black"
-    tools:context=".LossCalculator">
+    tools:context=".Fragments.LossCalculator">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,38 +17,50 @@
         android:paddingVertical="16dp"
         android:clipToPadding="false">
 
-        <com.google.android.material.card.MaterialCardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="10dp"
-            app:cardBackgroundColor="@color/card_background">
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp"
+            android:gravity="center">
 
-            <LinearLayout
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="ISRO Logo"
+                android:src="@drawable/isro" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calculate Losses"
+                android:textSize="24sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginBottom="32dp" />
+
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="10dp"
+                app:cardBackgroundColor="@color/card_background"
+                android:layout_marginBottom="24dp"> <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="24dp"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-                    android:layout_marginBottom="16dp"
-                    android:contentDescription="ISRO Logo"
-                    android:src="@drawable/isro" />
+                android:padding="24dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Calculate Losses"
-                    android:textSize="24sp"
+                    android:text="Antenna Gain Calculation"
+                    android:textSize="20sp"
                     android:textColor="@color/white"
                     android:textStyle="bold"
-                    android:layout_marginBottom="32dp" />
+                    android:layout_marginBottom="24dp"/>
 
-                <!-- Antenna Diameter Input -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -90,7 +102,6 @@
                         android:gravity="center"/>
                 </LinearLayout>
 
-                <!-- Frequency Input -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -131,7 +142,6 @@
                         android:gravity="center"/>
                 </LinearLayout>
 
-                <!-- Wavelength Output -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -156,7 +166,6 @@
                     android:layout_marginBottom="16dp"
                     tools:text="0.025 m"/>
 
-                <!-- Gain Output (Initially Gone) -->
                 <TextView
                     android:id="@+id/root1"
                     android:layout_width="match_parent"
@@ -164,8 +173,8 @@
                     android:text="Gain"
                     android:textColor="@color/white"
                     android:textSize="16sp"
-                    android:layout_marginBottom="4dp"
-                    android:visibility="gone"/>
+                    android:visibility="gone"
+                    android:layout_marginBottom="4dp"/>
                 <LinearLayout
                     android:id="@+id/root"
                     android:layout_width="match_parent"
@@ -173,8 +182,8 @@
                     android:background="@drawable/input_field_background"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
-                    android:layout_marginBottom="16dp"
-                    android:visibility="gone">
+                    android:visibility="gone"
+                    android:layout_marginBottom="16dp">
                     <EditText
                         android:id="@+id/gain"
                         android:layout_width="0dp"
@@ -210,388 +219,423 @@
                     android:background="@drawable/btn_bg"
                     android:textSize="16sp"
                     android:paddingVertical="12dp"
-                    android:textAllCaps="true"
-                    android:layout_marginBottom="24dp"/>
-
-                <!-- Data Rate Input -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Data Rate"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="4dp"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/input_field_background"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="16dp">
-                    <EditText
-                        android:id="@+id/datarate"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="48dp"
-                        android:background="@android:color/transparent"
-                        android:hint="e.g. 500"
-                        android:textColor="@color/text_input_text"
-                        android:textColorHint="@color/text_input_hint"
-                        android:inputType="numberDecimal"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="8dp"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        tools:text="500"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:minWidth="56dp"
-                        android:textSize="18sp"
-                        android:background="@drawable/unit_background_end_rounded"
-                        android:text="KBPS"
-                        android:textColor="@color/white"
-                        android:gravity="center"/>
-                </LinearLayout>
-
-                <!-- Modulation Factor Input -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Modulation Factor"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="4dp"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/input_field_background"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="16dp">
-                    <EditText
-                        android:id="@+id/modulationfactor"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="48dp"
-                        android:background="@android:color/transparent"
-                        android:hint="e.g. 8"
-                        android:textColor="@color/text_input_text"
-                        android:textColorHint="@color/text_input_hint"
-                        android:inputType="numberDecimal"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        tools:text="8"/>
-                </LinearLayout>
-
-                <!-- Forward Error Correction Input -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Forward Error Correction"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="4dp"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/input_field_background"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="16dp">
-                    <EditText
-                        android:id="@+id/fec"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="48dp"
-                        android:background="@android:color/transparent"
-                        android:hint="e.g. 0.75"
-                        android:textColor="@color/text_input_text"
-                        android:textColorHint="@color/text_input_hint"
-                        android:inputType="numberDecimal"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        tools:text="0.75"/>
-                </LinearLayout>
-
-                <!-- Symbol Rate Output (Initially Gone) -->
-                <TextView
-                    android:id="@+id/sr1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Symbol Rate"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="4dp"
-                    android:visibility="gone"
-                    tools:visibility="visible"/>
-                <LinearLayout
-                    android:id="@+id/sr2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/input_field_background"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="16dp"
-                    android:visibility="gone"
-                    tools:visibility="visible">
-                    <EditText
-                        android:id="@+id/srrate"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="48dp"
-                        android:background="@android:color/transparent"
-                        android:hint="Symbol Rate (calculated)"
-                        android:textColor="@color/text_input_text"
-                        android:textColorHint="@color/text_input_hint"
-                        android:inputType="numberDecimal"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="8dp"
-                        android:enabled="false"
-                        android:focusable="false"
-                        android:clickable="false"
-                        tools:text="666.67 KSPS"/>
-                </LinearLayout>
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/symbolrate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="CALCULATE SYMBOL RATE"
-                    android:textColor="@color/white"
-                    android:background="@drawable/btn_bg"
-                    android:textSize="16sp"
-                    android:paddingVertical="12dp"
-                    android:textAllCaps="true"
-                    android:layout_marginBottom="24dp"/>
-
-                <!-- Distance Input -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Distance"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="4dp"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/input_field_background"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="16dp">
-                    <EditText
-                        android:id="@+id/distance"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="48dp"
-                        android:background="@android:color/transparent"
-                        android:hint="e.g. 38000000"
-                        android:inputType="numberDecimal"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="8dp"
-                        android:textColor="@color/text_input_text"
-                        android:textColorHint="@color/text_input_hint"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        tools:text="38000000"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:minWidth="56dp"
-                        android:textSize="18sp"
-                        android:background="@drawable/unit_background_end_rounded"
-                        android:text="m"
-                        android:textColor="@color/white"
-                        android:gravity="center"/>
-                </LinearLayout>
-
-                <!-- Frequency for Loss Calculation Input -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Frequency (for loss)"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="4dp"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/input_field_background"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="16dp">
-                    <EditText
-                        android:id="@+id/flossfrequency"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="48dp"
-                        android:background="@android:color/transparent"
-                        android:hint="e.g. 11.7"
-                        android:inputType="numberDecimal"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="8dp"
-                        android:textColor="@color/text_input_text"
-                        android:textColorHint="@color/text_input_hint"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        tools:text="11.7"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:minWidth="56dp"
-                        android:textSize="18sp"
-                        android:background="@drawable/unit_background_end_rounded"
-                        android:text="GHz"
-                        android:textColor="@color/white"
-                        android:gravity="center"/>
-                </LinearLayout>
-
-                <!-- Transmitted Gain Input -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Transmitted Gain"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="4dp"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/input_field_background"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="16dp">
-                    <EditText
-                        android:id="@+id/transmitgain"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="48dp"
-                        android:background="@android:color/transparent"
-                        android:hint="e.g. 40"
-                        android:textColor="@color/text_input_text"
-                        android:textColorHint="@color/text_input_hint"
-                        android:inputType="numberDecimal"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="8dp"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        tools:text="40"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:minWidth="56dp"
-                        android:textSize="18sp"
-                        android:background="@drawable/unit_background_end_rounded"
-                        android:text="dB"
-                        android:textColor="@color/white"
-                        android:gravity="center"/>
-                </LinearLayout>
-
-                <!-- Receive Gain Input -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Receive Gain"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="4dp"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/input_field_background"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="16dp">
-                    <EditText
-                        android:id="@+id/receivegain"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="48dp"
-                        android:background="@android:color/transparent"
-                        android:hint="e.g. 30"
-                        android:textColor="@color/text_input_text"
-                        android:textColorHint="@color/text_input_hint"
-                        android:inputType="numberDecimal"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="8dp"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        tools:text="30"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:minWidth="56dp"
-                        android:textSize="18sp"
-                        android:background="@drawable/unit_background_end_rounded"
-                        android:text="dB"
-                        android:textColor="@color/white"
-                        android:gravity="center"/>
-                </LinearLayout>
-
-                <!-- FSPL Output (Initially Gone) -->
-                <TextView
-                    android:id="@+id/fspl1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Free Space Path Loss"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="4dp"
-                    android:visibility="gone"
-                    tools:visibility="visible"/>
-                <LinearLayout
-                    android:id="@+id/fspl2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/input_field_background"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="16dp"
-                    android:visibility="gone"
-                    tools:visibility="visible">
-                    <EditText
-                        android:id="@+id/fspl"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="48dp"
-                        android:background="@android:color/transparent"
-                        android:hint="FSPL (calculated)"
-                        android:textColor="@color/text_input_text"
-                        android:textColorHint="@color/text_input_hint"
-                        android:inputType="numberDecimal"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="8dp"
-                        android:enabled="false"
-                        android:focusable="false"
-                        android:clickable="false"
-                        tools:text="200.0 dB"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:minWidth="56dp"
-                        android:textSize="18sp"
-                        android:background="@drawable/unit_background_end_rounded"
-                        android:text="dB"
-                        android:textColor="@color/white"
-                        android:gravity="center"/>
-                </LinearLayout>
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/calcfspl"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="CALCULATE FREE SPACE PATH LOSS"
-                    android:textColor="@color/white"
-                    android:background="@drawable/btn_bg"
-                    android:textSize="16sp"
-                    android:paddingVertical="12dp"
-                    android:textAllCaps="true"
-                    android:layout_marginBottom="24dp"/>
-
+                    android:textAllCaps="true"/>
             </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="10dp"
+                app:cardBackgroundColor="@color/card_background"
+                android:layout_marginBottom="24dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Symbol Rate Calculation"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="24dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Data Rate"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="4dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/input_field_background"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+                        <EditText
+                            android:id="@+id/datarate"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="48dp"
+                            android:background="@android:color/transparent"
+                            android:hint="e.g. 500"
+                            android:textColor="@color/text_input_text"
+                            android:textColorHint="@color/text_input_hint"
+                            android:inputType="numberDecimal"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="8dp"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            tools:text="500"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:minWidth="56dp"
+                            android:textSize="18sp"
+                            android:background="@drawable/unit_background_end_rounded"
+                            android:text="KBPS"
+                            android:textColor="@color/white"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Modulation Factor"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="4dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/input_field_background"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+                        <EditText
+                            android:id="@+id/modulationfactor"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="48dp"
+                            android:background="@android:color/transparent"
+                            android:hint="e.g. 8"
+                            android:textColor="@color/text_input_text"
+                            android:textColorHint="@color/text_input_hint"
+                            android:inputType="numberDecimal"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            tools:text="8"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Forward Error Correction"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="4dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/input_field_background"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+                        <EditText
+                            android:id="@+id/fec"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="48dp"
+                            android:background="@android:color/transparent"
+                            android:hint="e.g. 0.75"
+                            android:textColor="@color/text_input_text"
+                            android:textColorHint="@color/text_input_hint"
+                            android:inputType="numberDecimal"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            tools:text="0.75"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/sr1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Symbol Rate"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:visibility="gone"
+                        android:layout_marginBottom="4dp"/>
+                    <LinearLayout
+                        android:id="@+id/sr2"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/input_field_background"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+                        <EditText
+                            android:id="@+id/srrate"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="48dp"
+                            android:background="@android:color/transparent"
+                            android:hint="Symbol Rate (calculated)"
+                            android:textColor="@color/text_input_text"
+                            android:textColorHint="@color/text_input_hint"
+                            android:inputType="numberDecimal"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="8dp"
+                            android:enabled="false"
+                            android:focusable="false"
+                            android:clickable="false"
+                            tools:text="666.67 KSPS"/>
+                    </LinearLayout>
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/symbolrate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="CALCULATE SYMBOL RATE"
+                        android:textColor="@color/white"
+                        android:background="@drawable/btn_bg"
+                        android:textSize="16sp"
+                        android:paddingVertical="12dp"
+                        android:textAllCaps="true"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="10dp"
+                app:cardBackgroundColor="@color/card_background"
+                android:layout_marginBottom="24dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Free Space Path Loss Calculation"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="24dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Distance"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="4dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/input_field_background"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+                        <EditText
+                            android:id="@+id/distance"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="48dp"
+                            android:background="@android:color/transparent"
+                            android:hint="e.g. 38000000"
+                            android:inputType="numberDecimal"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="8dp"
+                            android:textColor="@color/text_input_text"
+                            android:textColorHint="@color/text_input_hint"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            tools:text="38000000"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:minWidth="56dp"
+                            android:textSize="18sp"
+                            android:background="@drawable/unit_background_end_rounded"
+                            android:text="m"
+                            android:textColor="@color/white"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Frequency (for loss)"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="4dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/input_field_background"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+                        <EditText
+                            android:id="@+id/flossfrequency"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="48dp"
+                            android:background="@android:color/transparent"
+                            android:hint="e.g. 11.7"
+                            android:inputType="numberDecimal"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="8dp"
+                            android:textColor="@color/text_input_text"
+                            android:textColorHint="@color/text_input_hint"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            tools:text="11.7"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:minWidth="56dp"
+                            android:textSize="18sp"
+                            android:background="@drawable/unit_background_end_rounded"
+                            android:text="GHz"
+                            android:textColor="@color/white"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Transmitted Gain"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="4dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/input_field_background"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+                        <EditText
+                            android:id="@+id/transmitgain"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="48dp"
+                            android:background="@android:color/transparent"
+                            android:hint="e.g. 40"
+                            android:textColor="@color/text_input_text"
+                            android:textColorHint="@color/text_input_hint"
+                            android:inputType="numberDecimal"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="8dp"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            tools:text="40"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:minWidth="56dp"
+                            android:textSize="18sp"
+                            android:background="@drawable/unit_background_end_rounded"
+                            android:text="dB"
+                            android:textColor="@color/white"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Receive Gain"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="4dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/input_field_background"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+                        <EditText
+                            android:id="@+id/receivegain"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="48dp"
+                            android:background="@android:color/transparent"
+                            android:hint="e.g. 30"
+                            android:textColor="@color/text_input_text"
+                            android:textColorHint="@color/text_input_hint"
+                            android:inputType="numberDecimal"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="8dp"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            tools:text="30"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:minWidth="56dp"
+                            android:textSize="18sp"
+                            android:background="@drawable/unit_background_end_rounded"
+                            android:text="dB"
+                            android:textColor="@color/white"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/fspl1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Free Space Path Loss"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:visibility="gone"
+                        android:layout_marginBottom="4dp"/>
+                    <LinearLayout
+                        android:id="@+id/fspl2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/input_field_background"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:visibility="gone"
+                        android:layout_marginBottom="16dp">
+                        <EditText
+                            android:id="@+id/fspl"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="48dp"
+                            android:background="@android:color/transparent"
+                            android:hint="FSPL (calculated)"
+                            android:textColor="@color/text_input_text"
+                            android:textColorHint="@color/text_input_hint"
+                            android:inputType="numberDecimal"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="8dp"
+                            android:enabled="false"
+                            android:focusable="false"
+                            android:clickable="false"
+                            tools:text="200.0 dB"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:minWidth="56dp"
+                            android:textSize="18sp"
+                            android:background="@drawable/unit_background_end_rounded"
+                            android:text="dB"
+                            android:textColor="@color/white"
+                            android:gravity="center"/>
+                    </LinearLayout>
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/calcfspl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="CALCULATE FREE SPACE PATH LOSS"
+                        android:textColor="@color/white"
+                        android:background="@drawable/btn_bg"
+                        android:textSize="16sp"
+                        android:paddingVertical="12dp"
+                        android:textAllCaps="true"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
     </ScrollView>
 </LinearLayout>
