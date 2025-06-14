@@ -2,6 +2,8 @@ package com.vinay.vsatsaarthi;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.vinay.vsatsaarthi.Adapters.FragmentAdapter;
 import com.vinay.vsatsaarthi.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
@@ -12,5 +14,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        FragmentAdapter adapter =new FragmentAdapter(getSupportFragmentManager());
+        binding.viewPager.setAdapter(adapter);
+        binding.tabLayout.setupWithViewPager(binding.viewPager);
     }
 }
