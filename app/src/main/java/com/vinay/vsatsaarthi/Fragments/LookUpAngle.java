@@ -44,11 +44,9 @@ public class LookUpAngle extends Fragment {
         objectAnimator2.setRepeatMode(ObjectAnimator.REVERSE);
         objectAnimator2.setRepeatCount(ObjectAnimator.INFINITE);
         objectAnimator2.start();
-
         satname.add("Satellite");
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, satname);
         binding.spinner.setAdapter(adapter);
-
         binding.setlonglat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +61,6 @@ public class LookUpAngle extends Fragment {
                             if (location != null) {
                                 binding.userlongitude.setText(String.valueOf(location.getLongitude()));
                                 binding.userLatitude.setText(String.valueOf(location.getLatitude()));
-                                getname();
                             } else {
                                 Toast.makeText(getContext(), "Location not available. Try moving outdoors.", Toast.LENGTH_SHORT).show();
                             }
@@ -72,9 +69,7 @@ public class LookUpAngle extends Fragment {
                 }
             }
         });
-
-        getname(); // Call getname() initially to load satellite list
-
+        getname();
         binding.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -191,7 +186,7 @@ public class LookUpAngle extends Fragment {
                     binding.azimuth.setError("");
                 else {
                     Intent intent = new Intent(getContext(), CompassActivity.class);
-                    intent.putExtra("Azismuth", binding.azimuth.getText().toString());
+                    intent.putExtra("Azimuth", binding.azimuth.getText().toString());
                     intent.putExtra("Elevation", binding.elevation.getText().toString());
                     intent.putExtra("Longitude", binding.userlongitude.getText().toString());
                     intent.putExtra("Latitude", binding.userLatitude.getText().toString());
