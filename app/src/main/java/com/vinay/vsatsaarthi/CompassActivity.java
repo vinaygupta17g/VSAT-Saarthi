@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.vinay.vsatsaarthi.databinding.ActivityCompassBinding;
@@ -47,9 +46,7 @@ ActivityCompassBinding binding;
             sensorManager.registerListener(this,magnetometer,SensorManager.SENSOR_DELAY_NORMAL);
         }
         else
-        {
             Toast.makeText(this, "Sensor not found", Toast.LENGTH_SHORT).show();
-        }
     }
     @Override
     public void onSensorChanged(SensorEvent event) {
