@@ -33,7 +33,7 @@ ActivityCompassBinding binding;
         Double azimuth=Double.parseDouble(intent.getStringExtra("Azimuth"));
         Double elevation=Double.parseDouble(intent.getStringExtra("Elevation"));
         intent.getStringExtra("Elevation");
-        binding.satazismuth.setText(Math.round(azimuth)+"");
+        binding.satazimuth.setText(Math.round(azimuth)+"");
         binding.satelevation.setText(Math.round(elevation)+"");
         binding.longitude.setText(intent.getStringExtra("Longitude"));
         binding.latitude.setText(intent.getStringExtra("Latitude"));
@@ -74,9 +74,9 @@ ActivityCompassBinding binding;
                 int elevation=(int) Math.toDegrees(orientationValues[1]);
                 azimuth=(azimuth+360)%360;
                 binding.compass.setRotation(-azimuth);
-                binding.userazismuth.setText(azimuth+"");
+                binding.userazimuth.setText(azimuth+"");
                 binding.userelevation.setText(elevation+"");
-                if(binding.satazismuth.getText().toString().equals(binding.userazismuth.getText().toString())&&binding.satelevation.getText().toString().equals(binding.userelevation.getText().toString()))
+                if(binding.satazimuth.getText().toString().equals(binding.userazimuth.getText().toString())&&binding.satelevation.getText().toString().equals(binding.userelevation.getText().toString()))
                     mediaplayer(true);
             }
         }
