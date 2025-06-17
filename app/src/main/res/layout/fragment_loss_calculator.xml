@@ -635,6 +635,246 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- For C/N Ratio -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="10dp"
+                app:cardBackgroundColor="@color/card_background"
+                android:layout_marginBottom="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Carrier to Noise Calculation"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="24dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="EIRP"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="4dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/input_field_background"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+                        <EditText
+                            android:id="@+id/distance"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="48dp"
+                            android:background="@android:color/transparent"
+                            android:hint="e.g. 38000000"
+                            android:inputType="numberDecimal"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="8dp"
+                            android:textColor="@color/text_input_text"
+                            android:textColorHint="@color/text_input_hint"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            tools:text="38000000"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:minWidth="56dp"
+                            android:textSize="18sp"
+                            android:background="@drawable/unit_background_end_rounded"
+                            android:text="dBW"
+                            android:textColor="@color/white"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="FSPL"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="4dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/input_field_background"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+                        <EditText
+                            android:id="@+id/flossfrequency"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="48dp"
+                            android:background="@android:color/transparent"
+                            android:hint="e.g. 11.7"
+                            android:inputType="numberDecimal"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="8dp"
+                            android:textColor="@color/text_input_text"
+                            android:textColorHint="@color/text_input_hint"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            tools:text="11.7"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:minWidth="56dp"
+                            android:textSize="18sp"
+                            android:background="@drawable/unit_background_end_rounded"
+                            android:text="dB"
+                            android:textColor="@color/white"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="G/T Ratio"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="4dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/input_field_background"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+                        <EditText
+                            android:id="@+id/transmitgain"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="48dp"
+                            android:background="@android:color/transparent"
+                            android:hint="e.g. 40"
+                            android:textColor="@color/text_input_text"
+                            android:textColorHint="@color/text_input_hint"
+                            android:inputType="numberDecimal"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="8dp"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            tools:text="40"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:minWidth="56dp"
+                            android:textSize="18sp"
+                            android:background="@drawable/unit_background_end_rounded"
+                            android:text="dB/K"
+                            android:textColor="@color/white"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Bandwidth"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="4dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/input_field_background"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+                        <EditText
+                            android:id="@+id/receivegain"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="48dp"
+                            android:background="@android:color/transparent"
+                            android:hint="e.g. 30"
+                            android:textColor="@color/text_input_text"
+                            android:textColorHint="@color/text_input_hint"
+                            android:inputType="numberDecimal"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="8dp"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            tools:text="30"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:minWidth="56dp"
+                            android:textSize="18sp"
+                            android:background="@drawable/unit_background_end_rounded"
+                            android:text="dBHz"
+                            android:textColor="@color/white"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/cn1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Carrier-to-Noise Ratio (C/N)"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:visibility="visible"
+                        android:layout_marginBottom="4dp"/>
+                    <LinearLayout
+                        android:id="@+id/cn2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/input_field_background"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:visibility="visible"
+                        android:layout_marginBottom="16dp">
+                        <EditText
+                            android:id="@+id/cnratio"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="48dp"
+                            android:background="@android:color/transparent"
+                            android:hint="FSPL (calculated)"
+                            android:textColor="@color/text_input_text"
+                            android:textColorHint="@color/text_input_hint"
+                            android:inputType="numberDecimal"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="8dp"
+                            android:enabled="false"
+                            android:focusable="false"
+                            android:clickable="false"
+                            tools:text="200.0 dB"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:minWidth="56dp"
+                            android:textSize="18sp"
+                            android:background="@drawable/unit_background_end_rounded"
+                            android:text="dB"
+                            android:textColor="@color/white"
+                            android:gravity="center"/>
+                    </LinearLayout>
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/calccnratio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="CALCULATE FREE SPACE PATH LOSS"
+                        android:textColor="@color/white"
+                        android:background="@drawable/btn_bg"
+                        android:textSize="16sp"
+                        android:paddingVertical="12dp"
+                        android:textAllCaps="true"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
