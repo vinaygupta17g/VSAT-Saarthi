@@ -158,7 +158,7 @@
                     android:hint="Wavelength (calculated)"
                     android:textColor="@color/text_input_text"
                     android:textColorHint="@color/text_input_hint"
-                    android:inputType=" numberSigned|numberDecimal "
+                    android:inputType="numberSigned|numberDecimal"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:enabled="false"
