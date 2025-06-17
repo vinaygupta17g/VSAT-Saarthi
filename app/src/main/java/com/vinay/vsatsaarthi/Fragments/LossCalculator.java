@@ -100,6 +100,9 @@ public class LossCalculator extends Fragment {
             public void onClick(View v) {
                 double k = -228.6;
                 double CN = (Double.parseDouble(binding.eirp.getText().toString())) - (Double.parseDouble(binding.calculatedfspl.getText().toString())) + (Double.parseDouble(binding.gtratio.getText().toString())) - k-(Double.parseDouble(binding.bandwidth.getText().toString()));
+                binding.cnratio.setText(CN+"");
+                binding.cn1.setVisibility(View.VISIBLE);
+                binding.cn2.setVisibility(View.VISIBLE);
             }
         });
         return binding.getRoot();
