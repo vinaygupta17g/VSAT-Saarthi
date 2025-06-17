@@ -8,6 +8,8 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import com.vinay.vsatsaarthi.databinding.FragmentLossCalculatorBinding;
 public class LossCalculator extends Fragment {
     FragmentLossCalculatorBinding binding;
@@ -91,6 +93,13 @@ public class LossCalculator extends Fragment {
                     binding.fspl.setText(fspl);
                     binding.calculatedfspl.setText(fspl);
                 }
+            }
+        });
+        binding.calccnratio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                double k = -228.6;
+                double CN = (Double.parseDouble(binding.eirp.getText().toString())) - (Double.parseDouble(binding.calculatedfspl.getText().toString())) + (Double.parseDouble(binding.gtratio.getText().toString())) - k-(Double.parseDouble(binding.bandwidth.getText().toString()));
             }
         });
         return binding.getRoot();
