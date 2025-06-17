@@ -794,7 +794,7 @@
                         android:gravity="center_vertical"
                         android:layout_marginBottom="16dp">
                         <EditText
-                            android:id="@+id/receivegain"
+                            android:id="@+id/bandwidth"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="48dp"
@@ -826,7 +826,7 @@
                         android:text="Carrier-to-Noise Ratio (C/N)"
                         android:textColor="@color/white"
                         android:textSize="16sp"
-                        android:visibility="visible"
+                        android:visibility="gone"
                         android:layout_marginBottom="4dp"/>
                     <LinearLayout
                         android:id="@+id/cn2"
@@ -835,7 +835,7 @@
                         android:background="@drawable/input_field_background"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
-                        android:visibility="visible"
+                        android:visibility="gone"
                         android:layout_marginBottom="16dp">
                         <EditText
                             android:id="@+id/cnratio"
@@ -867,7 +867,7 @@
                         android:id="@+id/calccnratio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="CALCULATE FREE SPACE PATH LOSS"
+                        android:text="CALCULATE CArrier-to-noise ratio"
                         android:textColor="@color/white"
                         android:background="@drawable/btn_bg"
                         android:textSize="16sp"
