@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,6 +20,7 @@ import com.vinay.vsatsaarthi.databinding.FragmentLossCalculatorBinding;
 import org.json.JSONObject;
 
 public class LossCalculator extends Fragment {
+    String gain="";
     FragmentLossCalculatorBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -120,9 +123,8 @@ public class LossCalculator extends Fragment {
         return binding.getRoot();
     }
 
-    public String gaincalculator(String diameter,String frequency)
+    public void gaincalculator(String diameter, String frequency, EditText id)
     {
-        String gain[]={""};
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         JSONObject jsonObject =new JSONObject();
         try
@@ -130,21 +132,13 @@ public class LossCalculator extends Fragment {
             jsonObject.put("diameter",diameter);
             jsonObject.put("frequency",frequency);
         }
-        catch(Exception e)
-        {
-            Log.e("Error",e.getMessage());
-        }
+        catch(Exception e) {e.printStackTrace();}
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,"http://ec2-3-7-254-184.ap-south-1.compute.amazonaws.com:5001/gain/gaincalculator",jsonObject, response -> {
             try {
-                String gain1=response.getString("gain");
-                gain[0]=gain1;
+                id.setText(response.getString("gain"));
             }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            };
+            catch (Exception e) {e.printStackTrace();}
         },error -> {error.printStackTrace();});
         requestQueue.add(jsonObjectRequest);
-        return gain[0];
     }
 }
