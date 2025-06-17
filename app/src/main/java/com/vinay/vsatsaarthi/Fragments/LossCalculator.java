@@ -89,6 +89,7 @@ public class LossCalculator extends Fragment {
                     double fspl1 = 20 * Math.log10(Double.parseDouble(binding.distance.getText().toString())) + 20 * Math.log10(Double.parseDouble(binding.flossfrequency.getText().toString())*Math.pow(10,9)) + 20 * Math.log10((4 * Math.PI) /(3*Math.pow(10,8)))-(Double.parseDouble(binding.transmitgain.getText().toString()))-(Double.parseDouble(binding.receivegain.getText().toString()));
                     String fspl =String.format("%.2f",fspl1);
                     binding.fspl.setText(fspl);
+                    binding.calculatedfspl.setText(fspl);
                 }
             }
         });
