@@ -103,6 +103,12 @@ public class LossCalculator extends Fragment {
                 binding.cnratio.setText(CN+"");
                 binding.cn1.setVisibility(View.VISIBLE);
                 binding.cn2.setVisibility(View.VISIBLE);
+                binding.scrollbar.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        binding.scrollbar.fullScroll(View.FOCUS_DOWN);
+                    }
+                });
             }
         });
         return binding.getRoot();
