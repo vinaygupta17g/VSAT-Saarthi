@@ -4,10 +4,19 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.vinay.vsatsaarthi.databinding.FragmentLossCalculatorBinding;
+
+import org.json.JSONObject;
+
 public class LossCalculator extends Fragment {
     FragmentLossCalculatorBinding binding;
     @Override
@@ -109,5 +118,33 @@ public class LossCalculator extends Fragment {
             }
         });
         return binding.getRoot();
+    }
+
+    public String gaincalculator(String diameter,String frequency)
+    {
+        String gain[]={""};
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        JSONObject jsonObject =new JSONObject();
+        try
+        {
+            jsonObject.put("diameter",diameter);
+            jsonObject.put("frequency",frequency);
+        }
+        catch(Exception e)
+        {
+            Log.e("Error",e.getMessage());
+        }
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,"http://ec2-3-7-254-184.ap-south-1.compute.amazonaws.com:5001/gain/gaincalculator",jsonObject, response -> {
+            try {
+                String gain1=response.getString("gain");
+                gain[0]=gain1;
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            };
+        },error -> {error.printStackTrace();});
+        requestQueue.add(jsonObjectRequest);
+        return gain[0];
     }
 }
