@@ -10,13 +10,6 @@ public class UsersModel {
         this.useremail = useremail;
         this.userpassword = userpassword;
     }
-    public UsersModel(String username, String usermobile, String useremail, String userpassword) {
-        this.username = username;
-        this.usermobile = usermobile;
-        this.useremail = useremail;
-        this.userpassword = userpassword;
-    }
-
     public UsersModel(){}
 
     public String getUserid() {
