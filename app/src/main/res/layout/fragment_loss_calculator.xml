@@ -9,7 +9,6 @@
     android:orientation="vertical"
     android:background="@color/black"
     tools:context=".Fragments.LossCalculator">
-
     <ScrollView
         android:id="@+id/scrollbar"
         android:layout_width="match_parent"
@@ -24,13 +23,6 @@
             android:orientation="vertical"
             android:paddingHorizontal="15dp"
             android:gravity="center">
-
-            <ImageView
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:layout_marginBottom="16dp"
-                android:contentDescription="ISRO Logo"
-                android:src="@drawable/isro" />
 
             <TextView
                 android:layout_width="wrap_content"
