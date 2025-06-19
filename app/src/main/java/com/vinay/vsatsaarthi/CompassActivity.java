@@ -36,8 +36,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         SensorManager sensorManager=(SensorManager) getSystemService(SENSOR_SERVICE);
         Sensor accelarometer =sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         Sensor magnetometer =sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
-        if(accelarometer!=null && magnetometer!=null)
-        {
+        if(accelarometer!=null && magnetometer!=null) {
             sensorManager.registerListener(this,accelarometer,SensorManager.SENSOR_DELAY_NORMAL);
             sensorManager.registerListener(this,magnetometer,SensorManager.SENSOR_DELAY_NORMAL);
         }
@@ -46,25 +45,21 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     }
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if(event.sensor.getType()==Sensor.TYPE_ACCELEROMETER)
-        {
+        if(event.sensor.getType()==Sensor.TYPE_ACCELEROMETER) {
             accelerometer[0]=event.values[0];
             accelerometer[1]=event.values[1];
             accelerometer[2]=event.values[2];
         }
-        else if (event.sensor.getType()==Sensor.TYPE_MAGNETIC_FIELD)
-        {
+        else if (event.sensor.getType()==Sensor.TYPE_MAGNETIC_FIELD) {
             magnetometer[0]=event.values[0];
             magnetometer[1]=event.values[1];
             magnetometer[2]=event.values[2];
         }
-        if(accelerometer[0]!=0 && accelerometer[1]!=0 && accelerometer[2]!=0 && magnetometer[0]!=0 && magnetometer[1]!=0 && magnetometer[2]!=0)
-        {
+        if(accelerometer[0]!=0 && accelerometer[1]!=0 && accelerometer[2]!=0 && magnetometer[0]!=0 && magnetometer[1]!=0 && magnetometer[2]!=0) {
             float rotationMatrix[]=new float[9];
             float orientationValues[]=new float[3];
             boolean success=SensorManager.getRotationMatrix(rotationMatrix,null,new float[]{accelerometer[0],accelerometer[1],accelerometer[2]},new float[]{magnetometer[0],magnetometer[1],magnetometer[2]});
-            if(success)
-            {
+            if(success) {
                 SensorManager.getOrientation(rotationMatrix,orientationValues);
                 int azimuth=(int) Math.toDegrees(orientationValues[0]);
                 int elevation=(int) Math.toDegrees(orientationValues[1]);
@@ -79,8 +74,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     }
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {}
-    public void mediaplayer(boolean flag)
-    {
+    public void mediaplayer(boolean flag) {
         MediaPlayer mediaPlayer =new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         String audiopath="android.resource://com.vinay.vsatsaarthi/raw/beepsound";
@@ -88,8 +82,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         try {
             mediaPlayer.setDataSource(this,audio);
             mediaPlayer.prepare();}
-        catch (Exception e)
-        {
+        catch (Exception e) {
             Toast.makeText(this,e.getMessage(), Toast.LENGTH_SHORT).show();
         }
         if(flag) mediaPlayer.start();
