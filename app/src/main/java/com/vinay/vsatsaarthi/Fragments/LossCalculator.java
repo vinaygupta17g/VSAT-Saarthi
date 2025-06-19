@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -53,14 +51,8 @@ public class LossCalculator extends Fragment {
         binding.symbolrate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(binding.datarate.getText().toString().isEmpty())
-                binding.datarate.setError("");
-                else if(binding.modulationfactor.getText().toString().isEmpty())
-                    binding.modulationfactor.setError("");
-                else if(binding.fec.getText().toString().isEmpty())
-                    binding.fec.setError("");
-                else
-                {
+                EditText[] ids={binding.datarate,binding.modulationfactor,binding.fec};
+                if(checkNull(ids)){
                     Double sr = (Double.parseDouble(binding.datarate.getText().toString()))/((Double.parseDouble(binding.modulationfactor.getText().toString()))*(Double.parseDouble(binding.fec.getText().toString())));
                     String symbol_rate = String.format("%.7f ",sr);
                     setVisibility(binding.sr2,binding.sr1);
@@ -71,16 +63,8 @@ public class LossCalculator extends Fragment {
         binding.calcfspl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(binding.distance.getText().toString().isEmpty())
-                    binding.distance.setError("");
-                else if(binding.flossfrequency.getText().toString().isEmpty())
-                    binding.flossfrequency.setError("");
-                else if(binding.transmitgain.getText().toString().isEmpty())
-                    binding.transmitgain.setError("");
-                else if(binding.receivegain.getText().toString().isEmpty())
-                    binding.receivegain.setError("");
-                else
-                {
+                EditText[] ids={binding.distance,binding.flossfrequency,binding.transmitgain,binding.receivegain};
+                if(checkNull(ids)){
                     double fspl1 = 20 * Math.log10(Double.parseDouble(binding.distance.getText().toString())) + 20 * Math.log10(Double.parseDouble(binding.flossfrequency.getText().toString())*Math.pow(10,9)) + 20 * Math.log10((4 * Math.PI) /(3*Math.pow(10,8)))-(Double.parseDouble(binding.transmitgain.getText().toString()))-(Double.parseDouble(binding.receivegain.getText().toString()));
                     String fspl =String.format("%.2f",fspl1);
                     binding.fspl.setText(fspl);
@@ -92,16 +76,19 @@ public class LossCalculator extends Fragment {
         binding.calccnratio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double k = -228.6;
-                double CN = (Double.parseDouble(binding.eirp.getText().toString())) - (Double.parseDouble(binding.calculatedfspl.getText().toString())) + (Double.parseDouble(binding.gtratio.getText().toString())) - k-(Double.parseDouble(binding.bandwidth.getText().toString()));
-                binding.cnratio.setText(CN+"");
-                setVisibility(binding.cn2,binding.cn1);
-                binding.scrollbar.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        binding.scrollbar.fullScroll(View.FOCUS_DOWN);
-                    }
-                });
+                EditText[] ids ={binding.eirp,binding.calculatedfspl,binding.gtratio,binding.bandwidth};
+                if(checkNull(ids)) {
+                    double k = -228.6;
+                    double CN = (Double.parseDouble(binding.eirp.getText().toString())) - (Double.parseDouble(binding.calculatedfspl.getText().toString())) + (Double.parseDouble(binding.gtratio.getText().toString())) - k-(Double.parseDouble(binding.bandwidth.getText().toString()));
+                    binding.cnratio.setText(CN+"");
+                    setVisibility(binding.cn2,binding.cn1);
+                    binding.scrollbar.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            binding.scrollbar.fullScroll(View.FOCUS_DOWN);
+                        }
+                    });
+                }
             }
         });
         return binding.getRoot();
