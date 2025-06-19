@@ -16,13 +16,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.vinay.vsatsaarthi.databinding.ActivityCompassBinding;
 public class CompassActivity extends AppCompatActivity implements SensorEventListener {
-ActivityCompassBinding binding;
-    float accelerometerx=0f;
-    float accelerometery=0f;
-    float accelerometerz=0f;
-    float magnetometerx=0f;
-    float magnetometery=0f;
-    float magnetometerz=0f;
+    ActivityCompassBinding binding;
+    float accelerometer[]=new float[3];
+    float magnetometer[]=new float[3];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,21 +48,21 @@ ActivityCompassBinding binding;
     public void onSensorChanged(SensorEvent event) {
         if(event.sensor.getType()==Sensor.TYPE_ACCELEROMETER)
         {
-            accelerometerx=event.values[0];
-            accelerometery=event.values[1];
-            accelerometerz=event.values[2];
+            accelerometer[0]=event.values[0];
+            accelerometer[1]=event.values[1];
+            accelerometer[2]=event.values[2];
         }
         else if (event.sensor.getType()==Sensor.TYPE_MAGNETIC_FIELD)
         {
-            magnetometerx=event.values[0];
-            magnetometery=event.values[1];
-            magnetometerz=event.values[2];
+            magnetometer[0]=event.values[0];
+            magnetometer[1]=event.values[1];
+            magnetometer[2]=event.values[2];
         }
-        if(accelerometerx!=0 && accelerometery!=0 && accelerometerz!=0 && magnetometerx!=0 && magnetometery!=0 && magnetometerz!=0)
+        if(accelerometer[0]!=0 && accelerometer[1]!=0 && accelerometer[2]!=0 && magnetometer[0]!=0 && magnetometer[1]!=0 && magnetometer[2]!=0)
         {
             float rotationMatrix[]=new float[9];
             float orientationValues[]=new float[3];
-            boolean success=SensorManager.getRotationMatrix(rotationMatrix,null,new float[]{accelerometerx,accelerometery,accelerometerz},new float[]{magnetometerx,magnetometery,magnetometerz});
+            boolean success=SensorManager.getRotationMatrix(rotationMatrix,null,new float[]{accelerometer[0],accelerometer[1],accelerometer[2]},new float[]{magnetometer[0],magnetometer[1],magnetometer[2]});
             if(success)
             {
                 SensorManager.getOrientation(rotationMatrix,orientationValues);
