@@ -98,7 +98,6 @@ public class LookUpAngle extends Fragment {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-
         dishname.add("Provider");
         dishname.add("Dish TV");
         dishname.add("DD Free Dish");
@@ -165,7 +164,6 @@ public class LookUpAngle extends Fragment {
                 }
             }
         });
-
         binding.compass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
