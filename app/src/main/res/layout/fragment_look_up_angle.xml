@@ -209,8 +209,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="18sp"
                                 android:enabled="false"
-                                android:textColor="@color/satellite_value_color"
-                                tools:text="0.0° N"/>
+                                android:textColor="@color/satellite_value_color"/>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="0dp"
@@ -233,8 +232,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="18sp"
                                 android:enabled="false"
-                                android:textColor="@color/satellite_value_color"
-                                tools:text="35786 km"/>
+                                android:textColor="@color/satellite_value_color"/>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
