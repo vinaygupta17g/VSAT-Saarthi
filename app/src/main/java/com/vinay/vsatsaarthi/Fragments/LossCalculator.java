@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -50,11 +53,8 @@ public class LossCalculator extends Fragment {
                 else if(binding.wavelength.getText().toString().isEmpty())
                     binding.wavelength.setError("");
                 else{
-                    binding.root1.setVisibility(View.VISIBLE);
-                    binding.root.setVisibility(View.VISIBLE);
-                    double gain=0.7*(22/7)*(22/7)*(Math.pow((Double.parseDouble(binding.diameter.getText().toString()))/(Double.parseDouble(binding.wavelength.getText().toString())),2));
-                    int gaininGHZ=(int)Math.floor(10*Math.log10(gain));
-                    binding.gain.setText(gaininGHZ+"");
+                    setVisibility(binding.root,binding.root1);
+                    gaincalculator(binding.diameter.getText().toString(),binding.frequency.getText().toString(),binding.gain);
                 }
             }
         });
@@ -71,8 +71,7 @@ public class LossCalculator extends Fragment {
                 {
                     Double sr = (Double.parseDouble(binding.datarate.getText().toString()))/((Double.parseDouble(binding.modulationfactor.getText().toString()))*(Double.parseDouble(binding.fec.getText().toString())));
                     String symbol_rate = String.format("%.7f ",sr);
-                    binding.sr1.setVisibility(View.VISIBLE);
-                    binding.sr2.setVisibility(View.VISIBLE);
+                    setVisibility(binding.sr2,binding.sr1);
                     binding.srrate.setText(symbol_rate);
                 }
             }
@@ -90,11 +89,10 @@ public class LossCalculator extends Fragment {
                     binding.receivegain.setError("");
                 else
                 {
-                    binding.fspl1.setVisibility(View.VISIBLE);
-                    binding.fspl2.setVisibility(View.VISIBLE);
                     double fspl1 = 20 * Math.log10(Double.parseDouble(binding.distance.getText().toString())) + 20 * Math.log10(Double.parseDouble(binding.flossfrequency.getText().toString())*Math.pow(10,9)) + 20 * Math.log10((4 * Math.PI) /(3*Math.pow(10,8)))-(Double.parseDouble(binding.transmitgain.getText().toString()))-(Double.parseDouble(binding.receivegain.getText().toString()));
                     String fspl =String.format("%.2f",fspl1);
                     binding.fspl.setText(fspl);
+                    setVisibility(binding.fspl2,binding.fspl1);
                     binding.calculatedfspl.setText(fspl);
                 }
             }
@@ -105,8 +103,7 @@ public class LossCalculator extends Fragment {
                 double k = -228.6;
                 double CN = (Double.parseDouble(binding.eirp.getText().toString())) - (Double.parseDouble(binding.calculatedfspl.getText().toString())) + (Double.parseDouble(binding.gtratio.getText().toString())) - k-(Double.parseDouble(binding.bandwidth.getText().toString()));
                 binding.cnratio.setText(CN+"");
-                binding.cn1.setVisibility(View.VISIBLE);
-                binding.cn2.setVisibility(View.VISIBLE);
+                setVisibility(binding.cn2,binding.cn1);
                 binding.scrollbar.post(new Runnable() {
                     @Override
                     public void run() {
@@ -117,7 +114,6 @@ public class LossCalculator extends Fragment {
         });
         return binding.getRoot();
     }
-
     public void gaincalculator(String diameter, String frequency, EditText id)
     {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
@@ -135,5 +131,10 @@ public class LossCalculator extends Fragment {
             catch (Exception e) {e.printStackTrace();}
         },error -> {error.printStackTrace();});
         requestQueue.add(jsonObjectRequest);
+    }
+    public void setVisibility(LinearLayout id1, TextView id2)
+    {
+        id1.setVisibility(View.VISIBLE);
+        id2.setVisibility(View.VISIBLE);
     }
 }
