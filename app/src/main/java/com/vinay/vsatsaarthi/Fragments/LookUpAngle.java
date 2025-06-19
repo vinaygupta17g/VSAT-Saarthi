@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -89,15 +90,10 @@ public class LookUpAngle extends Fragment {
                                 binding.sataltitude.setText(altitude);
                             }
                         }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }, error -> {
-                    error.printStackTrace();
-                });
+                    } catch (JSONException e) {e.printStackTrace();}
+                }, error -> {error.printStackTrace();});
                 requestQueue.add(jsonArrayRequest);
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
@@ -128,15 +124,8 @@ public class LookUpAngle extends Fragment {
         binding.calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (binding.userlongitude.getText().toString().isEmpty())
-                    binding.userlongitude.setError("");
-                else if (binding.userLatitude.getText().toString().isEmpty())
-                    binding.userLatitude.setError("");
-                else if (binding.satLongitude.getText().toString().isEmpty())
-                    binding.satLongitude.setError("");
-                else if (binding.satlatitude.getText().toString().isEmpty())
-                    binding.satlatitude.setError("");
-                else {
+                EditText[] ids ={binding.userlongitude,binding.userLatitude,binding.satLongitude,binding.satlatitude,binding.sataltitude};
+                if (LossCalculator.checkNull(ids)){
                     RequestQueue requestQueue1 = Volley.newRequestQueue(getContext());
                     JSONObject jsonObject = new JSONObject();
                     try {
@@ -180,11 +169,6 @@ public class LookUpAngle extends Fragment {
         binding.compass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (binding.elevation.getText().toString().isEmpty())
-                    binding.elevation.setError("");
-                else if (binding.azimuth.getText().toString().isEmpty())
-                    binding.azimuth.setError("");
-                else {
                     Intent intent = new Intent(getContext(), CompassActivity.class);
                     intent.putExtra("Azimuth", binding.azimuth.getText().toString());
                     intent.putExtra("Elevation", binding.elevation.getText().toString());
@@ -192,7 +176,6 @@ public class LookUpAngle extends Fragment {
                     intent.putExtra("Latitude", binding.userLatitude.getText().toString());
                     startActivity(intent);
                     getActivity().finish();
-                }
             }
         });
         // Inflate the layout for this fragment
@@ -207,7 +190,6 @@ public class LookUpAngle extends Fragment {
             return satName = "GSAT-24";
         return satName;
     }
-
     public void getname() {
         satname.clear();
         satname.add("Satellite");

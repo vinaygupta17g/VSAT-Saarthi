@@ -110,11 +110,11 @@ public class LossCalculator extends Fragment {
         },error -> {error.printStackTrace();});
         requestQueue.add(jsonObjectRequest);
     }
-    public void setVisibility(LinearLayout id1, TextView id2) {
+    public static void setVisibility(LinearLayout id1, TextView id2) {
         id1.setVisibility(View.VISIBLE);
         id2.setVisibility(View.VISIBLE);
     }
-    public boolean checkNull(EditText [] ids) {
+    public static boolean checkNull(EditText [] ids) {
         for(int i=0;i<ids.length;i++) {
             if(ids[i].getText().toString().isEmpty()) {
                 ids[i].setError("");
