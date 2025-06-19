@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,7 +19,6 @@ import com.android.volley.toolbox.Volley;
 import com.vinay.vsatsaarthi.databinding.FragmentLossCalculatorBinding;
 import org.json.JSONObject;
 public class LossCalculator extends Fragment {
-    String gain="";
     FragmentLossCalculatorBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,7 +28,6 @@ public class LossCalculator extends Fragment {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(!binding.frequency.getText().toString().isEmpty()){
@@ -46,16 +45,9 @@ public class LossCalculator extends Fragment {
         binding.calcgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(binding.diameter.getText().toString().isEmpty())
-                binding.diameter.setError("");
-                else if(binding.frequency.getText().toString().isEmpty())
-                    binding.frequency.setError("");
-                else if(binding.wavelength.getText().toString().isEmpty())
-                    binding.wavelength.setError("");
-                else{
-                    setVisibility(binding.root,binding.root1);
+                EditText[] ids ={binding.diameter,binding.frequency,binding.wavelength};
+                if(checkNull(ids))
                     gaincalculator(binding.diameter.getText().toString(),binding.frequency.getText().toString(),binding.gain);
-                }
             }
         });
         binding.symbolrate.setOnClickListener(new View.OnClickListener() {
@@ -114,11 +106,9 @@ public class LossCalculator extends Fragment {
         });
         return binding.getRoot();
     }
-    public void gaincalculator(String diameter, String frequency, EditText id)
-    {
+    public void gaincalculator(String diameter, String frequency, EditText id) {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        JSONObject jsonObject =new JSONObject();
-        try
+        JSONObject jsonObject =new JSONObject();try
         {
             jsonObject.put("diameter",diameter);
             jsonObject.put("frequency",frequency);
@@ -127,14 +117,23 @@ public class LossCalculator extends Fragment {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,"http://ec2-3-7-254-184.ap-south-1.compute.amazonaws.com:5001/gain/gaincalculator",jsonObject, response -> {
             try {
                 id.setText(response.getString("gain"));
+                setVisibility(binding.root,binding.root1);
             }
             catch (Exception e) {e.printStackTrace();}
         },error -> {error.printStackTrace();});
         requestQueue.add(jsonObjectRequest);
     }
-    public void setVisibility(LinearLayout id1, TextView id2)
-    {
+    public void setVisibility(LinearLayout id1, TextView id2) {
         id1.setVisibility(View.VISIBLE);
         id2.setVisibility(View.VISIBLE);
+    }
+    public boolean checkNull(EditText [] ids) {
+        for(int i=0;i<ids.length;i++) {
+            if(ids[i].getText().toString().isEmpty()) {
+                ids[i].setError("");
+                return false;
+            }
+        }
+        return true;
     }
 }
