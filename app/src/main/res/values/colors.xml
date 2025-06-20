@@ -4,9 +4,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#979797</color>
     <color name="green">#1DB81D</color>
-    <color name="card_background">#2C2C2C</color> <!-- A dark grey for card backgrounds -->
-    <color name="button_background">#007BFF</color> <!-- A vibrant blue for buttons -->
-    <color name="text_input_hint">#AAAAAA</color> <!-- Light grey hint text -->
+    <color name="card_background">#2C2C2C</color>
+    <color name="button_background">#007BFF</color>
+    <color name="text_input_hint">#AAAAAA</color>
     <color name="text_input_text">#FFFFFF</color> <!-- White input text -->
     <color name="separator_color">#FFEB3B</color> <!-- Yellow for "OR" text -->
     <color name="satellite_value_color">#8BC34A</color> <!-- Light green for satellite data -->
