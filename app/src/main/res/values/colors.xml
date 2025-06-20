@@ -12,12 +12,12 @@
     <color name="satellite_value_color">#8BC34A</color> <!-- Light green for satellite data -->
     <color name="user_value_color">#03A9F4</color> <!-- Light blue for user data -->
     <color name="location_value_color">#FFEB3B</color> <!-- Yellow for location data -->
-    <color name="toolbar_color">#1A1A1A</color> <!-- Slightly lighter dark grey for toolbar -->
+    <color name="toolbar_color">#1A1A1A</color>
     <color name="button_background_pressed">#0056B3</color>
-    <color name="link_text_color">#03A9F4</color> <!-- Light blue for clickable links -->
-    <color name="input_main_bg">#404040</color> <!-- Background for the main input area -->
-    <color name="splash_background_dark">#121212</color> <!-- A very dark grey/black -->
-    <color name="splash_text_primary">#E0E0E0</color> <!-- Off-white for main text -->
-    <color name="splash_text_accent">#03A9F4</color> <!-- A subtle blue accent for "Tech Titans" -->
+    <color name="link_text_color">#03A9F4</color>
+    <color name="input_main_bg">#404040</color>
+    <color name="splash_background_dark">#121212</color>
+    <color name="splash_text_primary">#E0E0E0</color>
+    <color name="splash_text_accent">#03A9F4</color>
     <color name="input_unit_bg">#505050</color>
 </resources>
