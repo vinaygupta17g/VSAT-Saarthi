@@ -35,13 +35,11 @@ public class SignInActivity extends AppCompatActivity {
                   binding.email.setError("");
               else if(binding.password.getText().toString().isEmpty())
                   binding.password.setError("");
-              else
-              {
+              else {
                   auth.signInWithEmailAndPassword(binding.email.getText().toString(),binding.password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                       @Override
                       public void onComplete(@NonNull Task<AuthResult> task) {
-                          if(task.isSuccessful())
-                          {
+                          if(task.isSuccessful()) {
                                   intent = new Intent(context, MainActivity.class);
                                   startActivity(intent);
                                   finish();
@@ -53,8 +51,7 @@ public class SignInActivity extends AppCompatActivity {
               }
             }
         });
-        if(auth.getCurrentUser()!=null)
-        {
+        if(auth.getCurrentUser()!=null) {
                 intent=new Intent(context,MainActivity.class);
                 startActivity(intent);
                 finish();
@@ -72,8 +69,7 @@ public class SignInActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(binding.email.getText().toString().isEmpty())
                     binding.email.setError("Enter email to forget password");
-                else
-                {
+                else {
                     auth.sendPasswordResetEmail(binding.email.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
