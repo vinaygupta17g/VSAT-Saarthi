@@ -7,8 +7,8 @@
     <color name="card_background">#2C2C2C</color>
     <color name="button_background">#007BFF</color>
     <color name="text_input_hint">#AAAAAA</color>
-    <color name="text_input_text">#FFFFFF</color> <!-- White input text -->
-    <color name="separator_color">#FFEB3B</color> <!-- Yellow for "OR" text -->
+    <color name="text_input_text">#FFFFFF</color>
+    <color name="separator_color">#FFEB3B</color>
     <color name="satellite_value_color">#8BC34A</color>
     <color name="user_value_color">#03A9F4</color>
     <color name="location_value_color">#FFEB3B</color>
