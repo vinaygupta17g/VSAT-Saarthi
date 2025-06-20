@@ -39,13 +39,11 @@ public class SignUpActivity extends AppCompatActivity {
                         binding.email.setError("");
                 else if(binding.password.getText().toString().isEmpty())
                     binding.password.setError("");
-                else
-                {
+                else {
                     auth.createUserWithEmailAndPassword(binding.email.getText().toString(),binding.password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful())
-                            {
+                            if(task.isSuccessful()) {
                                 String uid=task.getResult().getUser().getUid();
                                 UsersModel user=new UsersModel(uid,binding.name.getText().toString(),binding.mobile.getText().toString(),binding.email.getText().toString(),binding.password.getText().toString());
                                 database.getReference().child("Users").child(uid).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -58,8 +56,7 @@ public class SignUpActivity extends AppCompatActivity {
                                     }
                                 });
                             }
-                            else
-                            {
+                            else {
                                 Toast.makeText(context,task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
