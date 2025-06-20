@@ -25,8 +25,7 @@ public class SplashActivity extends AppCompatActivity {
                     animation.setDuration(1000);
                     Thread.sleep(1000);
                 }
-                catch (Exception e)
-                {
+                catch (Exception e) {
                     Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG);
                 }
                 finally {
