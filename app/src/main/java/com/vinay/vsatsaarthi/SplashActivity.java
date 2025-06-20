@@ -13,10 +13,8 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ImageView imageView=findViewById(R.id.logo);
-        Thread thrd=new Thread()
-        {
-            public void run()
-            {
+        Thread thrd=new Thread() {
+            public void run() {
                 try {
                     Animation animation =AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.slide_in_left);
                     animation.setDuration(1000);
