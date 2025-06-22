@@ -1,16 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true">
+
+    <!-- Gradient Background -->
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:textSize="15dp"
-        android:layout_alignParentBottom="true"
+        android:layout_height="60dp"
+        android:background="@drawable/footer_gradient"/>
+
+    <!-- Content Container -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
         android:gravity="center"
-        android:background="@color/toolbar_color"
-        android:textColor="@color/location_value_color"
-        android:text="© TECH TITANS , VSAT SAARTHI , ISRO"/>
+        android:paddingHorizontal="16dp">
+
+        <!-- Copyright Icon -->
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_copyright"
+            app:tint="@color/white_alpha_80"
+            android:layout_marginEnd="8dp"/>
+
+        <!-- Text with subtle animation -->
+        <TextView
+            android:id="@+id/footer_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="© TECH TITANS • VSAT SAARTHI • ISRO"
+            android:textSize="14sp"
+            android:letterSpacing="0.03"
+            android:textColor="@color/white_alpha_80"
+            android:fontFamily="@font/roboto_medium"/>
+
+        <!-- Optional: Add logo at the end -->
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_partner_logo"
+            android:tint="@color/white_alpha_80"
+            android:layout_marginStart="16dp"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <!-- Top Border -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white_alpha_20"/>
 </RelativeLayout>
