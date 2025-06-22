@@ -42,10 +42,9 @@
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_partner_logo"
-            android:tint="@color/white_alpha_80"
+            android:src="@drawable/isro"
             android:layout_marginStart="16dp"
-            android:visibility="gone"/>
+            android:visibility="visible"/>
     </LinearLayout>
 
     <!-- Top Border -->
