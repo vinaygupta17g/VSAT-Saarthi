@@ -1,159 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash_gradient_background"
-    android:padding="24dp"
+    android:background="@color/splash_background_dark"
     tools:context=".SplashActivity">
 
-    <!-- Animated Background Elements -->
+    <!-- ISRO Logo -->
     <ImageView
-        android:id="@+id/bg_satellite_1"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:alpha="0.05"
-        android:src="@drawable/ic_satellite_outline"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/logo"
+        android:layout_width="160dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:srcCompat="@drawable/isro"
+        android:contentDescription="ISRO Logo" />
 
-    <ImageView
-        android:id="@+id/bg_satellite_2"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:alpha="0.03"
-        android:rotation="45"
-        android:src="@drawable/ic_satellite_outline"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- ISRO Logo with Elevation and Ripple Effect -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/logo_card"
+    <!-- App Name: VSAT Saarthi -->
+    <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:foreground="?attr/selectableItemBackgroundBorderless"
-        android:clickable="true"
-        android:focusable="true"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/app_name"
+        android:text="VSAT Saarthi"
+        android:textColor="@color/splash_text_primary"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed">
-
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="160dp"
-            android:layout_height="150dp"
-            android:padding="16dp"
-            android:src="@drawable/isro"
-            android:contentDescription="ISRO Logo" />
-    </com.google.android.material.card.MaterialCardView>
-
-    <!-- App Name with Typography -->
-    <TextView
-        android:id="@+id/app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="8dp"
-        android:text="VSAT Saarthi"
-        android:textColor="@color/splash_text_primary"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        android:fontFamily="@font/space_mono_bold"
-        android:letterSpacing="0.05"
-        app:layout_constraintBottom_toTopOf="@+id/tagline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo_card" />
-
-    <!-- Tagline with animated dots -->
-    <TextView
-        android:id="@+id/tagline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Satellite Alignment Assistant"
-        android:textColor="@color/splash_text_secondary"
-        android:textSize="14sp"
-        android:letterSpacing="0.05"
-        app:layout_constraintBottom_toTopOf="@+id/presented_by"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/app_name" />
+        app:layout_constraintVertical_bias="0.6"/>
 
     <!-- Presented By Label -->
     <TextView
-        android:id="@+id/presented_by"
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:text="Presented By"
         android:textColor="@color/splash_text_primary"
-        android:textSize="16sp"
-        android:letterSpacing="0.05"
-        app:layout_constraintBottom_toTopOf="@+id/team_name"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tagline" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-    <!-- Team Name with Accent and Pulse Animation -->
+    <!-- Team Name: Tech Titans -->
     <TextView
-        android:id="@+id/team_name"
+        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="Tech Titans"
         android:textColor="@color/splash_text_accent"
-        android:textSize="28sp"
+        android:textSize="26sp"
         android:textStyle="bold"
-        android:fontFamily="@font/space_mono_bold"
-        android:letterSpacing="0.05"
-        app:layout_constraintBottom_toTopOf="@+id/loading_indicator"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/presented_by" />
-
-    <!-- Custom Loading Indicator with Satellite Animation -->
-    <ImageView
-        android:id="@+id/loading_indicator"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/ic_satellite_loading"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/team_name" />
-
-    <!-- Version Info with Build Date -->
-    <TextView
-        android:id="@+id/version_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="v1.0.0 · June 2023"
-        android:textColor="@color/splash_text_secondary"
-        android:textSize="12sp"
+        android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <!-- Hidden Clickable Easter Egg -->
-    <TextView
-        android:id="@+id/easter_egg"
-        android:layout_width="1dp"
-        android:layout_height="1dp"
-        android:text="🚀"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@id/logo_card"
-        app:layout_constraintEnd_toEndOf="@id/logo_card" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
