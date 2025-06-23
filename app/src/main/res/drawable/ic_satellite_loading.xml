@@ -1,0 +1,33 @@
+<!-- ic_satellite_loading.xml -->
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:drawable="@drawable/ic_satellite_outline">
+
+    <!-- The satellite vector to animate -->
+    <aapt:attr name="android:drawable">
+        <vector
+            android:width="48dp"
+            android:height="48dp"
+            android:viewportWidth="24"
+            android:viewportHeight="24"
+            android:tint="@color/splash_text_accent">
+
+            <path
+                android:fillColor="@android:color/transparent"
+                android:strokeColor="@color/splash_text_accent"
+                android:strokeWidth="1.5"
+                android:pathData="M12,2L4,5v6.09c0,5 3.79,9.77 8.84,10.15 0.35,0.03 0.67,0.03 1,0.03 4.85,0 8.86-3.44 9.8-8l-1.97-0.37c-0.78,3.7-3.9,6.37-7.73,6.37-3.76,0-6.93-2.6-7.72-6.2L12,15.97l5.61-1.96-3.23-3.23 1.41-1.41 3.54,3.54 0.71-0.71-3.54-3.54 1.41-1.41 3.39,3.39 1.96-5.6L12,2z"/>
+        </vector>
+    </aapt:attr>
+
+    <!-- Rotation animation -->
+    <aapt:attr name="android:animation">
+        <objectAnimator
+            android:duration="2000"
+            android:interpolator="@android:interpolator/linear"
+            android:propertyName="rotation"
+            android:repeatCount="infinite"
+            android:valueFrom="0"
+            android:valueTo="360"/>
+    </aapt:attr>
+</animated-vector>
