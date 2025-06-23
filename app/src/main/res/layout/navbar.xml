@@ -10,7 +10,7 @@
         android:textSize="15dp"
         android:layout_alignParentBottom="true"
         android:gravity="center"
-        android:background="@color/toolbar_color"
+        android:background="@drawable/footer_gradient"
         android:textColor="@color/location_value_color"
         android:text="© TECH TITANS • VSAT SAARTHI • ISRO"/>
 </RelativeLayout>
