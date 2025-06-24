@@ -25,7 +25,7 @@ public class SplashActivity extends AppCompatActivity {
                     Thread.sleep(1000);
                 }
                 catch (Exception e) {
-                    Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG);
+                    e.printStackTrace();
                 }
                 finally {
                     Intent intent=new Intent(SplashActivity.this,SignInActivity.class);
