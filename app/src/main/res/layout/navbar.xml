@@ -12,5 +12,5 @@
         android:gravity="center"
         android:background="@color/toolbar_color"
         android:textColor="@color/location_value_color"
-        android:text="© TECH TITANS • VSAT SAARTHI • ISRO"/>
+        android:text="© VINAY KUMAR • VSAT SAARTHI • ISRO"/>
 </RelativeLayout>
